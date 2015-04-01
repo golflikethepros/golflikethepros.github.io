@@ -10,17 +10,10 @@
             padding: 0;
         }
 
-        #rightsidepanel {
-            left: 93%;
-            position: absolute;
-            top: 150px;
-            z-index: 5;
-        }
-
         #leftsidepanel {
             left: 0;
             position: absolute;
-            top: 150px;
+            top: 10%;
             z-index: 5;
         }
 
@@ -112,14 +105,9 @@
     </div>
     <br/>
     <div class="surrounds">
-        <button onclick=" initialize() ">Reinitialize</button>
+        <button title="If the system seems to be underperforming, this button will reload the map but maintain current settings." onclick="initialize()">Reinitialize</button>
     </div>
 
-</div>
-<div id="rightsidepanel">
-    
-    <br/>
-    
 </div>
 <div id="map-canvas"></div>
 </body>
