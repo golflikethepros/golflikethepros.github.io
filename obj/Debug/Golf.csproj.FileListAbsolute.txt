@@ -1,0 +1,6 @@
+E:\Golf\Site\Golf\bin\Golf.dll.config
+E:\Golf\Site\Golf\bin\Golf.dll
+E:\Golf\Site\Golf\bin\Golf.pdb
+E:\Golf\Site\Golf\obj\Debug\Golf.csprojResolveAssemblyReference.cache
+E:\Golf\Site\Golf\obj\Debug\Golf.dll
+E:\Golf\Site\Golf\obj\Debug\Golf.pdb
