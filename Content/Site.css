@@ -17,10 +17,10 @@
     background-color: #323949;
 }
 .not-all-the-way {
-    width: 95%;
+    direction: ltr
 }
 .not-all-the-way2 {
-    width: 15.25%;
+    direction: rtl;
 }
 .panel-body-style {
     background-color: #c0c0c0;
