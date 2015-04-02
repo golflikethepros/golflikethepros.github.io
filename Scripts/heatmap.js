@@ -30,25 +30,7 @@ var centers = [
     new google.maps.LatLng(30.194632, -81.390829),
     new google.maps.LatLng(30.197012, -81.392888)
 ];
-var snapper = new Snap({
-    element: document.getElementById("content"),
-    hyperextensible: false,
-    disable: "right"
-});
-var opened = false;
 
-function openLeft() {
-    if (opened) {
-        snapper.close();
-    } else {
-        snapper.open('left');
-    }
-    opened = !opened;
-}
-
-function closeSettings() {
-    snapper.close();
-}
 function initialize() {
     var mapOptions = {
         zoom: 16,
