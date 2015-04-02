@@ -38,8 +38,8 @@
     color: white;
     background-color: #536ea7;
     position: absolute;
-    margin-top: 120px;
-    right: 2.5%;
+    left: 1%;
+    bottom: 1%;
     min-height: 100px;
     width: 150px;
     z-index: 10;
