@@ -13,10 +13,21 @@
     padding: 0;
     background-color: black;
 }
-
+.blue-bg {
+    background-color: #323949;
+}
+.not-all-the-way {
+    width: 95%;
+}
+.not-all-the-way2 {
+    width: 15.25%;
+}
 .panel-body-style {
     background-color: #c0c0c0;
     border-color: #c0c0c0;
+}
+.small-hr {
+    margin-bottom: 5px;
 }
 
 #current-data {

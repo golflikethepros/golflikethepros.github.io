@@ -2,6 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="icon" type="image/ico" href="Content/ball.ico" />
     <title>TPC Sawgrass Shot Data</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
     <script src="Scripts/HeatMapDataStorage.js"></script>
@@ -10,249 +11,245 @@
     <script src="Scripts/snap.js"></script>
     <link type="text/css" rel="stylesheet" href="Content/bootstrap.css"/>
     <link type="text/css" rel="stylesheet" href="Content/bootstrap-theme.css"/>
-    <link type="text/css" rel="stylesheet" href="Content/Site.css"/>
     <link type="text/css" rel="stylesheet" href="Content/snap.css"/>
+    <link type="text/css" rel="stylesheet" href="Content/Site.css"/>
 </head>
 <body>
-<div class="snap-drawers">
-<div class="snap-content snap-drawer-left">
-    <h3>TPC Sawgrass</h3>
-    <hr/>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Select Year(s)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                    <form name="years" id="years">
-                        <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) " checked>2006 </span> </label><br />
-                        <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2007 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2008 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2009 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2010 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2011 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2012 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2013 </span> </label><br />
-<label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2014 </span> </label><br />
-                        <a class="btn btn-default btn-margin" onclick="selectAllYears()">Select/Deselect All</a>
-                    </form>
+<div class="snap-drawers blue-bg">
+    <div class="not-all-the-way2 snap-content snap-drawer-left ">
+        <div class="not-all-the-way">
+            <h3>TPC Sawgrass</h3>
+            <hr class="small-hr"/>
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Select Year(s)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <form name="years" id="years">
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) " checked>2006 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2007 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2008 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2009 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2010 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2011 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2012 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2013 </span> </label><br />
+                                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2014 </span> </label><br />
+                                <a class="btn btn-default btn-margin" onclick=" selectAllYears() ">Select/Deselect All</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        Select Round(s)
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                    <form name="rounds" id="rounds">
-                        <label><span><input type="Checkbox" name="Round" value="Round1" onclick=" updateRound(this.form) " checked>Round 1 </span></label> <br/>
-                        <label>
-                            <span><input type="Checkbox" name="Round" value="Round2" onclick=" updateRound(this.form) ">Round 2 </span>
-                        </label> <br />
-                        <label>
-                            <span><input type="Checkbox" name="Round" value="Round3" onclick=" updateRound(this.form) ">Round 3 </span>
-                        </label><br />
-                        <label>
-                            <span><input type="Checkbox" name="Round" value="Round4" onclick=" updateRound(this.form) ">Round 4 </span>
-                        </label><br />
-                                        <a class="btn btn-default btn-margin" onclick="selectAllRounds()">Select/Deselect All</a>
-</form>
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Select Round(s)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <form name="rounds" id="rounds">
+                                <label><span><input type="Checkbox" name="Round" value="Round1" onclick=" updateRound(this.form) " checked>Round 1 </span></label> <br />
+                                <label>
+                                    <span><input type="Checkbox" name="Round" value="Round2" onclick=" updateRound(this.form) ">Round 2 </span>
+                                </label> <br />
+                                <label>
+                                    <span><input type="Checkbox" name="Round" value="Round3" onclick=" updateRound(this.form) ">Round 3 </span>
+                                </label><br />
+                                <label>
+                                    <span><input type="Checkbox" name="Round" value="Round4" onclick=" updateRound(this.form) ">Round 4 </span>
+                                </label><br />
+                                <a class="btn btn-default btn-margin" onclick=" selectAllRounds() ">Select/Deselect All</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                        Select Hole
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                    <form role="form">
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(0) " name="optshot" checked/>Hole 1</label>
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                Select Hole
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(0) " name="optshot" checked />Hole 1</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(1) " name="optshot" />Hole 2</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(2) " name="optshot" />Hole 3</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(3) " name="optshot" />Hole 4</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(4) " name="optshot" />Hole 5</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(5) " name="optshot" />Hole 6</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(6) " name="optshot" />Hole 7</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(7) " name="optshot" />Hole 8</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(8) " name="optshot" />Hole 9</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(9) " name="optshot" />Hole 10</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(10) " name="optshot" />Hole 11</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(11) " name="optshot" />Hole 12</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(12) " name="optshot" />Hole 13</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(13) " name="optshot" />Hole 14</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(14) " name="optshot" />Hole 15</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(15) " name="optshot" />Hole 16</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(16) " name="optshot" />Hole 17</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateHoles(17) " name="optshot" />Hole 18</label>
+                                </div>
+                            </form>
                         </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(1) " name="optshot"/>Hole 2</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(2) " name="optshot"/>Hole 3</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(3) " name="optshot"/>Hole 4</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(4) " name="optshot"/>Hole 5</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(5) " name="optshot"/>Hole 6</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(6) " name="optshot"/>Hole 7</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(7) " name="optshot"/>Hole 8</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(8) " name="optshot"/>Hole 9</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(9) " name="optshot"/>Hole 10</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(10) " name="optshot"/>Hole 11</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(11) " name="optshot"/>Hole 12</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(12) " name="optshot"/>Hole 13</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(13) " name="optshot"/>Hole 14</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(14) " name="optshot"/>Hole 15</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(15) " name="optshot"/>Hole 16</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(16) " name="optshot"/>Hole 17</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateHoles(17) " name="optshot"/>Hole 18</label>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingFour">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                        Select Shot
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseFour" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                Select Shot
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFour">
 
-                <div class="panel-body">
-                    <form role="form">
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(0) " name="optshot" checked/>Shot 1</label>
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(0) " name="optshot" checked />Shot 1</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(1) " name="optshot" />Shot 2</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(2) " name="optshot" />Shot 3</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(3) " name="optshot" />Shot 4</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(4) " name="optshot" />Shot 5</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(5) " name="optshot" />Shot 6</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(6) " name="optshot" />Shot 7</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(7) " name="optshot" />Shot 8</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(8) " name="optshot" />Shot 9</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(9) " name="optshot" />Shot 10</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(10) " name="optshot" />Shot 11</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(11) " name="optshot" />Shot 12</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(12) " name="optshot" />Shot 13</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(13) " name="optshot" />Shot 14</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" onclick=" updateShots(14) " name="optshot" />Shot 15</label>
+                                </div>
+                            </form>
                         </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(1) " name="optshot"/>Shot 2</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(2) " name="optshot"/>Shot 3</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(3) " name="optshot"/>Shot 4</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(4) " name="optshot"/>Shot 5</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(5) " name="optshot"/>Shot 6</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(6) " name="optshot"/>Shot 7</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(7) " name="optshot"/>Shot 8</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(8) " name="optshot"/>Shot 9</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(9) " name="optshot"/>Shot 10</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(10) " name="optshot"/>Shot 11</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(11) " name="optshot"/>Shot 12</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(12) " name="optshot"/>Shot 13</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(13) " name="optshot"/>Shot 14</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" onclick=" updateShots(14) " name="optshot"/>Shot 15</label>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingSix">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                        Select Hole Score
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseSix" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingSix">
-                <div class="panel-body">
-                    <form id="scores" name="scores">
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">1 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">2 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">3 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">4 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">5 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">6 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">7 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">8 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">9 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">10 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">11 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">12 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">13 </span></label> <br />
-                        <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">14 </span></label> <br />
-                        <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">15 </span> <br/>
-                        <a class="btn btn-default btn-margin" onclick="selectAllScores()">Select/Deselect All</a>
-                    </form>
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingSix">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                Select Hole Score
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="panel-body">
+                            <form id="scores" name="scores">
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">1 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">2 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">3 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">4 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">5 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">6 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">7 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">8 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">9 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">10 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">11 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">12 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">13 </span></label> <br />
+                                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">14 </span></label> <br />
+                                <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">15 </span> <br />
+                                <a class="btn btn-default btn-margin" onclick=" selectAllScores() ">Select/Deselect All</a>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default panel-body-style">
-            <div class="panel-heading" role="tab" id="headingFive">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                        Other Options
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseFive" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFive">
-                <div class="panel-body">
-                    <a class="btn btn-default" onclick=" closeSettings() ">Close Settings Window</a>
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                Other Options
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+                            <a class="btn btn-default" onclick=" closeSettings() ">Close Settings Window</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <br/>
-
-    <br/>
-
-    <br/>
-</div>
 <div class="snap-content snap-drawer-right"></div>
 </div>
 <div id="content" class="snap-content" data-snap-ignore="true">

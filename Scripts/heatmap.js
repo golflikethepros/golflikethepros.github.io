@@ -8,7 +8,24 @@ var hole = 0;
 var shot = 0;
 var scores = [0, 1, 2, 3];
 var pars = [
-    4, 5, 3, 4, 4, 4, 4, 3, 5, 4, 5, 4, 3, 4, 4, 5, 3, 4
+    4,
+    5,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    5,
+    4,
+    5,
+    4,
+    3,
+    4,
+    4,
+    5,
+    3,
+    4
 ];
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
@@ -43,11 +60,12 @@ function initialize() {
 
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
-
     setDataToUse();
     setCurrentScores(0);
     heatmap = new google.maps.visualization.HeatmapLayer({
-        data: dataToUse
+        data: dataToUse,
+        radius: 10,
+        maxIntensity: 2
     });
 
     heatmap.setMap(map);

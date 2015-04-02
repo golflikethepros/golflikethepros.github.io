@@ -45,6 +45,8 @@
 }
 
 .snap-drawer-left {
+    overflow-y: auto;
+    overflow-x: hidden;
     color: whitesmoke;
     background-color: #323949;
   left: 0;
