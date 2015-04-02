@@ -214,7 +214,6 @@
             <br />
 
             <br />
-
         </div>
         <div class="snap-content snap-drawer-right"></div>
     </div>
@@ -231,25 +230,25 @@
         <div id="map-canvas"></div>
     </div>
     <script type="text/javascript">
-    var snapper = new Snap({
-        element: document.getElementById("content"),
-        hyperextensible: false,
-        disable: "right"
-    });
-    var opened = false;
+        var snapper = new Snap({
+            element: document.getElementById("content"),
+            hyperextensible: false,
+            disable: "right"
+        });
+        var opened = false;
 
-    function openLeft() {
-        if (opened) {
-            snapper.close();
-        } else {
-            snapper.open('left');
+        function openLeft() {
+            if (opened) {
+                snapper.close();
+            } else {
+                snapper.open('left');
+            }
+            opened = !opened;
         }
-        opened = !opened;
-    }
 
-    function closeSettings() {
-        snapper.close();
-    }
+        function closeSettings() {
+            snapper.close();
+        }
     </script>
 
     <script src="Scripts/jquery-1.9.1.min.js"></script>

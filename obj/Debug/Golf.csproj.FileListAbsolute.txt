@@ -24,3 +24,10 @@ E:\Golf\Site2\Golf\obj\Debug\Golf.dll
 E:\Golf\Site2\Golf\obj\Debug\Golf.pdb
 E:\Golf\Site2\Golf\bin\Microsoft.AspNet.FriendlyUrls.dll
 E:\Golf\Site2\Golf\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\Golf\2\bin\Golf.dll.config
+E:\Golf\2\bin\Golf.dll
+E:\Golf\2\bin\Golf.pdb
+E:\Golf\2\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\Golf\2\obj\Debug\Golf.csprojResolveAssemblyReference.cache
+E:\Golf\2\obj\Debug\Golf.dll
+E:\Golf\2\obj\Debug\Golf.pdb

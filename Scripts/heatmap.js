@@ -38,7 +38,7 @@ function initialize() {
         radius: 1,
         streetViewControl: false
     };
-    
+
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
@@ -103,8 +103,6 @@ function updateYears(frm) {
                     if (frm.Year[i].checked) {
                         years.push(i);
                     }
-            
-        
                 }
                 setDataToUse();
     heatmap.set("data", dataToUse);
@@ -115,6 +113,5 @@ function updateShots(value) {
     setDataToUse();
     heatmap.set("data", dataToUse);
 }
-
 
 google.maps.event.addDomListener(window, "load", initialize);
