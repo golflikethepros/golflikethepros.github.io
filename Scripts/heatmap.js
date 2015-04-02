@@ -38,7 +38,6 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.SATELLITE,
         mapTypeControl: false,
         minZoom: 16,
-        radius: 1,
         streetViewControl: false
     };
 
@@ -56,6 +55,7 @@ function initialize() {
 
 function setDataToUse() {
     dataToUse = [];
+    /*
     for (var l = 0; l < years.length; l++) {
         var year = years[l];
         for (var i = 0; i < rounds.length; i++) {
@@ -63,7 +63,7 @@ function setDataToUse() {
             dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot]);
         }
     }
-    /*
+    */
     for (var l = 0; l < years.length; l++) {
         var year = years[l];
         for (var i = 0; i < rounds.length; i++) {
@@ -73,7 +73,6 @@ function setDataToUse() {
             }
         }
     }
-    */
     var innerHtml = "<h4>Current Data:</h4>Year(s):";
     for (l = 0; l < years.length; l++) {
         innerHtml += " " + (years[l] + 2006) + ",";
