@@ -6,7 +6,10 @@ var years = [0];
 var rounds = [0];
 var hole = 0;
 var shot = 0;
-
+var scores = [0, 1, 2, 3];
+var pars = [
+    4, 5, 3, 4, 4, 4, 4, 3, 5, 4, 5, 4, 3, 4, 4, 5, 3, 4
+];
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
     new google.maps.LatLng(30.201720, -81.396194),
@@ -27,7 +30,25 @@ var centers = [
     new google.maps.LatLng(30.194632, -81.390829),
     new google.maps.LatLng(30.197012, -81.392888)
 ];
+var snapper = new Snap({
+    element: document.getElementById("content"),
+    hyperextensible: false,
+    disable: "right"
+});
+var opened = false;
 
+function openLeft() {
+    if (opened) {
+        snapper.close();
+    } else {
+        snapper.open('left');
+    }
+    opened = !opened;
+}
+
+function closeSettings() {
+    snapper.close();
+}
 function initialize() {
     var mapOptions = {
         zoom: 16,
@@ -43,7 +64,7 @@ function initialize() {
         mapOptions);
 
     setDataToUse();
-
+    setCurrentScores(0);
     heatmap = new google.maps.visualization.HeatmapLayer({
         data: dataToUse
     });
@@ -60,6 +81,17 @@ function setDataToUse() {
             dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot]);
         }
     }
+    /*
+    for (var l = 0; l < years.length; l++) {
+        var year = years[l];
+        for (var i = 0; i < rounds.length; i++) {
+            var round = rounds[i];
+            for (var j = 0; j < scores.length; j++){
+            dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
+            }
+        }
+    }
+    */
     var innerHtml = "<h4>Current Data:</h4>Year(s):";
     for (l = 0; l < years.length; l++) {
         innerHtml += " " + (years[l] + 2006) + ",";
@@ -72,12 +104,23 @@ function setDataToUse() {
     }
     innerHtml = innerHtml.substring(0, innerHtml.length - 1);
 
-    innerHtml += "<br/>Hole: " + (hole+1);
-    innerHtml += "<br/>Shot: " + (shot+1);
+    innerHtml += "<br/>Hole: " + (hole + 1);
+    innerHtml += "<br/>Shot: " + (shot + 1);
+
+    innerHtml += "<br/>Scores(s):";
+    for (i = 0; i < scores.length; i++) {
+        innerHtml += " " + (scores[i] + 1) + ",";
+    }
+    innerHtml = innerHtml.substring(0, innerHtml.length - 1);
+
+    innerHtml += "<br/>Data Points: " + dataToUse.length;
     document.getElementById("current-data").innerHTML = innerHtml;
 }
 
-function updateRound(frm) {
+function updateRound(frm, reset) {
+    if (reset == null) {
+        allRoundsSelected = null;
+    }
     rounds = [];
     for (var i = 0; i < frm.Round.length; i++) {
         if (frm.Round[i].checked) {
@@ -88,23 +131,105 @@ function updateRound(frm) {
     heatmap.set("data", dataToUse);
 }
 
+var allYearsSelected;
+
+function selectAllYears() {
+    if (allYearsSelected == null) {
+        allYearsSelected = false;
+    }
+    var yearForm = document.getElementById("years");
+    for (var i = 0; i < yearForm.Year.length; i++) {
+        if (!allYearsSelected) {
+            yearForm.Year[i].checked = true;
+        } else {
+            yearForm.Year[i].checked = false;
+        }
+    }
+    allYearsSelected = !allYearsSelected;
+    updateYears(yearForm, false);
+}
+
+var allScoresSelected;
+
+function selectAllScores() {
+    if (allScoresSelected == null) {
+        allScoresSelected = false;
+    }
+    var scoreForm = document.getElementById("scores");
+    for (var i = 0; i < scoreForm.Score.length; i++) {
+        if (!allScoresSelected) {
+            scoreForm.Score[i].checked = true;
+        } else {
+            scoreForm.Score[i].checked = false;
+        }
+    }
+    allScoresSelected = !allScoresSelected;
+    updateScores(scoreForm, false);
+}
+
+var allRoundsSelected;
+
+function selectAllRounds() {
+    if (allRoundsSelected == null) {
+        allRoundsSelected = false;
+    }
+    var roundForm = document.getElementById("rounds");
+    for (var i = 0; i < roundForm.Round.length; i++) {
+        if (!allRoundsSelected) {
+            roundForm.Round[i].checked = true;
+        } else {
+            roundForm.Round[i].checked = false;
+        }
+    }
+    allRoundsSelected = !allRoundsSelected;
+    updateRound(roundForm, false);
+}
+
+function updateScores(frm, reset) {
+    if (reset == null) {
+        allScoresSelected = null;
+    }
+    scores = [];
+    for (var i = 0; i < frm.Score.length; i++) {
+        if (frm.Score[i].checked) {
+            scores.push(i);
+        }
+    }
+    setDataToUse();
+    heatmap.set("data", dataToUse);
+}
+
+function setCurrentScores(hole) {
+    var currentPar = pars[hole];
+    var scoreForm = document.getElementById("scores");
+    for (var i = 0; i < scoreForm.Score.length; i++) {
+        if (i < currentPar) {
+            scoreForm.Score[i].checked = true;
+        } else {
+            scoreForm.Score[i].checked = false;
+        }
+    }
+
+}
+
 function updateHoles(value) {
     hole = value;
     shot = 0;
     map.setCenter(centers[value]);
     map.setZoom(17);
+    setCurrentScores(value);
     setDataToUse();
     heatmap.set("data", dataToUse);
 }
 
 function updateYears(frm) {
     years = [];
-                for (var i = 0; i < frm.Year.length; i++) {
-                    if (frm.Year[i].checked) {
-                        years.push(i);
-                    }
-                }
-                setDataToUse();
+    for (var i = 0; i < frm.Year.length; i++) {
+        if (frm.Year[i].checked) {
+            years.push(i);
+        }
+    }
+    setDataToUse();
     heatmap.set("data", dataToUse);
 }
 

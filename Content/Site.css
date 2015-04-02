@@ -1,102 +1,83 @@
-﻿ html, body{
-            height: 100%;
-            margin: 0;
-            padding: 0;
-     background-color: black;
-        }
- #map-canvas {
-            height: 95%;
-            margin-top: 44px;
-     margin-bottom: 150px;
-     width: 100%;
-            padding: 0;
-     background-color: black;
-        }
-
-        #leftsidepanel {
-            left: 0;
-            position: absolute;
-            top: 10%;
-            z-index: 5;
-        }
-        
-        .surrounds {
-            border: 1px solid #999;
-            background-color: #fff;
-        }
-
-        .panel-body-style {
-            background-color: #c0c0c0;
-            border-color: #c0c0c0;
-        }
-
-        #current-data {
-            font-size: 16px;
-            border-style: solid;
-            border-width: 2px;
-            border-color: white;
-            color: white;
-            background-color: #536ea7;
-            position: absolute;
-            margin-top: 130px;
-            right: 2.5%;
-            min-height: 100px;
-            width: 115px;
-            z-index: 10;
-            opacity: .8;
-        }
-
-        #close-settings {
-            margin-top: 10px;
-        }
-
-        #current-data h4 {
-            margin: 0;
-        }
-
-        #toolbar {
-  background: #536ea7;
-  border-bottom: 1px solid #111b32;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: auto;
-  height: 44px;
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
 }
-        #toolbar h1 {
-  color: #fff;
-  font-size: 16px;
-  line-height: 22px;
-  text-align: center;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  right: 44px;
-  left: 44px;
-  width: auto;
-            height: 44px;
-                    margin:10px;
-}
-        #settings-button {
-            display: block;
-            color: white;
-            font-size: 16px;
-            margin-top: 10px;
-            margin-left: 10px;
-            width: 44px;
-            height: 44px;
-        }
 
-        #content {
-            position: absolute;
-            z-index: 5;
-        }
-        
-        .height-adjustment{
-            padding: 0;
-            height: 18px;
-        }
-        h4 {
-            margin: 0;
-        }
+#map-canvas {
+    height: 95%;
+    margin-top: 44px;
+    margin-bottom: 150px;
+    width: 100%;
+    padding: 0;
+    background-color: black;
+}
+
+.panel-body-style {
+    background-color: #c0c0c0;
+    border-color: #c0c0c0;
+}
+
+#current-data {
+    font-size: 16px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    color: white;
+    background-color: #536ea7;
+    position: absolute;
+    margin-top: 120px;
+    right: 2.5%;
+    min-height: 100px;
+    width: 150px;
+    z-index: 10;
+    opacity: .6;
+}
+
+.btn-margin { margin-top: 10px; }
+
+#current-data h4 { margin: 0; }
+
+#toolbar {
+    background: #536ea7;
+    border-bottom: 1px solid #111b32;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    height: 44px;
+}
+
+#toolbar h1 {
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    right: 44px;
+    left: 44px;
+    width: auto;
+    height: 44px;
+    margin: 10px;
+}
+
+#settings-button {
+    display: block;
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 44px;
+    height: 44px;
+}
+
+#content {
+    position: absolute;
+    z-index: 5;
+}
+
+h4 { margin: 0; }
