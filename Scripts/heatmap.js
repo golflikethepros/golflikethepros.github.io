@@ -6,6 +6,7 @@ var years = [0];
 var rounds = [0];
 var hole = 0;
 var shot = 0;
+
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
     new google.maps.LatLng(30.201720, -81.396194),
@@ -25,13 +26,16 @@ var centers = [
     new google.maps.LatLng(30.195806, -81.391035),
     new google.maps.LatLng(30.194632, -81.390829),
     new google.maps.LatLng(30.197012, -81.392888)
-]
+];
+
 function initialize() {
     var mapOptions = {
         zoom: 16,
         center: new google.maps.LatLng(30.196842, -81.394031),
         mapTypeId: google.maps.MapTypeId.SATELLITE,
+        mapTypeControl: false,
         minZoom: 16,
+        radius: 1,
         streetViewControl: false
     };
     
@@ -56,6 +60,21 @@ function setDataToUse() {
             dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot]);
         }
     }
+    var innerHtml = "<h4>Current Data:</h4>Year(s):";
+    for (l = 0; l < years.length; l++) {
+        innerHtml += " " + (years[l] + 2006) + ",";
+    }
+    innerHtml = innerHtml.substring(0, innerHtml.length - 1);
+
+    innerHtml += "<br/>Round(s):";
+    for (i = 0; i < rounds.length; i++) {
+        innerHtml += " " + (rounds[i] + 1) + ",";
+    }
+    innerHtml = innerHtml.substring(0, innerHtml.length - 1);
+
+    innerHtml += "<br/>Hole: " + (hole+1);
+    innerHtml += "<br/>Shot: " + (shot+1);
+    document.getElementById("current-data").innerHTML = innerHtml;
 }
 
 function updateRound(frm) {
@@ -74,7 +93,6 @@ function updateHoles(value) {
     shot = 0;
     map.setCenter(centers[value]);
     map.setZoom(17);
-    document.getElementById("shot").value = shot;
     setDataToUse();
     heatmap.set("data", dataToUse);
 }
