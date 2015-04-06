@@ -67,9 +67,9 @@ function initialize() {
 
     setDataToUse();
     setCurrentScores(0);
-    setupMap();
+    setupMap(mapOptions);
 }
-function setupMap() {
+function setupMap(mapOptions) {
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
     heatmap = new google.maps.visualization.HeatmapLayer({
