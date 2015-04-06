@@ -171,8 +171,8 @@ function setButtonsForValues() {
     }
 
     var yearForm = document.getElementById("years");
-    for (var i = 0; i < yearForm.Year.length; i++) {
-        if (scores.indexOf(i) > -1) {
+    for (i = 0; i < yearForm.Year.length; i++) {
+        if (years.indexOf(i) > -1) {
             yearForm.Year[i].checked = true;
         } else {
             yearForm.Year[i].checked = false;
@@ -180,8 +180,8 @@ function setButtonsForValues() {
     }
 
     var roundForm = document.getElementById("rounds");
-    for (var i = 0; i < roundForm.Round.length; i++) {
-        if (scores.indexOf(i) > -1) {
+    for (i = 0; i < roundForm.Round.length; i++) {
+        if (rounds.indexOf(i) > -1) {
             roundForm.Round[i].checked = true;
         } else {
             roundForm.Round[i].checked = false;
