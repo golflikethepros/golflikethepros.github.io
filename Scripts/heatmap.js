@@ -55,7 +55,7 @@ function loadApi() {
         initialize();
     });
 }
-function initialize() {
+function createMap() {
     var mapOptions = {
         zoom: 16,
         center: new google.maps.LatLng(30.196842, -81.394031),
@@ -64,14 +64,19 @@ function initialize() {
         minZoom: 16,
         streetViewControl: false
     };
-
-    setDataToUse();
-    setCurrentScores(0);
-    setupMap(mapOptions);
-}
-function setupMap(mapOptions) {
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
+    return map;
+}
+
+function initialize() {
+    var map = createMap();
+    setDataToUse();
+    setCurrentScores(0);
+    setupMap(map);
+}
+
+function setupMap(map) {
     heatmap = new google.maps.visualization.HeatmapLayer({
         data: dataToUse,
         radius: 10,
