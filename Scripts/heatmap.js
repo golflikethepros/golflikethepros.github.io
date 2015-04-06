@@ -1,7 +1,7 @@
 ﻿// Adding 500 Data Points
 var map, dataToUse, heatmap;
 var round = 0;
-var heatMapData = GetHeatMapData();
+//var heatMapData = GetHeatMapData();
 var years = [0];
 var rounds = [0];
 var hole = 0;
@@ -126,7 +126,7 @@ function setDataToUse() {
             for (var i = 0; i < rounds.length; i++) {
                 var round = rounds[i];
                 for (var j = 0; j < scores.length; j++) {
-                    dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
+                    //dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
                 }
             }
         }
