@@ -62,7 +62,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="index.html" />
-    <Content Include="Scripts\cookieTest.js" />
+    <Content Include="Scripts\cookieHandler.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\snap.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
