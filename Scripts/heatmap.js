@@ -131,25 +131,30 @@ function buildQuery() {
 };
 
 function setInitialValues() {
-    years = readCookie("years");
-    if (!years) {
+    if (readCookie("years").length === 0) {
         years = [0];
+    } else {
+        years = readCookie("years");
     }
-    rounds = readCookie("rounds");
-    if (!rounds) {
+    if (readCookie("rounds").length === 0) {
         rounds = [0];
+    } else {
+        rounds = readCookie("rounds");
     }
-    hole = readCookie("hole")[0];
-    if (!hole) {
+    if (readCookie("hole").length === 0) {
         hole = 0;
+    } else {
+        hole = readCookie("hole")[0];
     }
-    scores = readCookie("rounds");
-    if (!scores) {
+    if (readCookie("scores").length === 0) {
         setCurrentScores(hole);
+    } else {
+        scores = readCookie("scores");
     }
-    shot = readCookie("shot")[0];
-    if (!shot) {
+    if (readCookie("shot").length === 0) {
         shot = 0;
+    } else {
+        shot = readCookie("shot")[0];
     }
     setButtonsForValues();
 }
