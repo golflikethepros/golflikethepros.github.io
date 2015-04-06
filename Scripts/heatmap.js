@@ -127,7 +127,7 @@ function buildQuery() {
     query += "and col2 = " + hole;
     query += " and col3 = " + shot;
 
-    for (var k = 0; k < scores; k++) {
+    for (var k = 0; k < scores.length; k++) {
         query += " col6 = " + (scores[k] + 1) + " OR";
     }
     return query;
