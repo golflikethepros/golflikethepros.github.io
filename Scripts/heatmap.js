@@ -139,10 +139,10 @@ function validData() {
 function setDataToUse() {
     dataToUse = [];
     if (validData()) {
-        //var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
-//        request.execute(function(response) {
-//            onDataFetched(response);
-//        });
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
+        request.execute(function(response) {
+            onDataFetched(response);
+        });
     }
 }
 
