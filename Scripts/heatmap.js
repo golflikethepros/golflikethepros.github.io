@@ -93,6 +93,7 @@ function onDataFetched(response) {
     } else {
         dataToUse = extractLocations(response.rows);
         setupMap(map);
+        setCurrentDataHtml();
     }
 }
 
@@ -134,22 +135,21 @@ function buildQuery() {
 
 function setDataToUse() {
     dataToUse = [];
-        var query =
-       "select col4, col5, col6 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where col0 = '2006' and col1 = 1 and col2 = 1 and col3 = 1 and col6 >= 1 and col6 <= 6";
-        query = buildQuery();
-        var request = gapi.client.fusiontables.query.sqlGet({ sql: query });
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
         request.execute(function (response) {
             onDataFetched(response);
         });
-    
+}
+
+function setCurrentDataHtml() {
     var innerHtml = "<h4>Current Data:</h4>Year(s):";
-    for (l = 0; l < years.length; l++) {
+    for (var l = 0; l < years.length; l++) {
         innerHtml += " " + (years[l] + 2006) + ",";
     }
     innerHtml = innerHtml.substring(0, innerHtml.length - 1);
 
     innerHtml += "<br/>Round(s):";
-    for (i = 0; i < rounds.length; i++) {
+    for (var i = 0; i < rounds.length; i++) {
         innerHtml += " " + (rounds[i] + 1) + ",";
     }
     innerHtml = innerHtml.substring(0, innerHtml.length - 1);
