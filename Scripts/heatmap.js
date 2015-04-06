@@ -114,15 +114,18 @@ function extractLocations(rows) {
 
 function buildQuery() {
     var query = "select col4, col5 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where";
+    query += " col0 in (";
     for (var i = 0; i < years.length; i++) {
-        query += " col0 = '" + (years[i] + 2006) + "' or";
+        query += "'" + (years[i] + 2006) + "',";
     }
-    query = query.substring(0, query.length - 2);
-    query += "and";
-
+    query = query.substring(0, query.length - 1);
+    query += ") and";
+    query += " col1 in (";
     for (var j = 0; j < rounds.length; j++) {
-        query += " col1 = " + (rounds[j] + 1) + " or";
+        query += (rounds[j] + 1) + ",";
     }
+    query = query.substring(0, query.length - 1);
+    query += ") ";
     query = query.substring(0, query.length - 2);
     query += "and col2 = " + (hole+1);
     query += " and col3 = " + (shot+1);
