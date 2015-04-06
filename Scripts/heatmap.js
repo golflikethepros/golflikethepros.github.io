@@ -132,13 +132,17 @@ function buildQuery() {
     query += " and col6 >= " + (scores[0]+1) + " and " + "col6 <= " + (scores[scores.length - 1]+1);
     return query;
 };
-
+function validData() {
+    return shot != null && hole != null && scores.length > 0 && years.length > 0 && rounds.length > 0;
+}
 function setDataToUse() {
     dataToUse = [];
+    if (validData()) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
-        request.execute(function (response) {
+        request.execute(function(response) {
             onDataFetched(response);
         });
+    }
 }
 
 function setCurrentDataHtml() {
