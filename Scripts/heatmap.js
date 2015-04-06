@@ -90,7 +90,7 @@ function onDataFetched(response) {
             ' (' + response.error.code + ')');
     } else {
         dataToUse = extractLocations(response.rows);
-        setupMap();
+        setupMap(map);
     }
 }
 
