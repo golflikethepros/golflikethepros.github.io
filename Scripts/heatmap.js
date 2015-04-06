@@ -48,11 +48,12 @@ var centers = [
     new google.maps.LatLng(30.197012, -81.392888)
 ];
 function loadApi() {
-    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-    var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function() {
-        initialize();
-    });
+//    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
+//    var promise = gapi.client.load('fusiontables', 'v1');
+//    promise.then(function() {
+//        initialize();
+    //    });
+    initialize();
 }
 function createMap() {
     var mapOptions = {
@@ -85,6 +86,7 @@ function setupMap(map) {
         heatmap.setMap(map);
     }
 };
+
 
 function onDataFetched(response) {
     if (response.error) {
@@ -138,10 +140,10 @@ function validData() {
 function setDataToUse() {
     dataToUse = [];
     if (validData()) {
-        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
-        request.execute(function(response) {
-            onDataFetched(response);
-        });
+        //var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
+//        request.execute(function(response) {
+//            onDataFetched(response);
+//        });
     }
 }
 
