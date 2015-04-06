@@ -50,7 +50,7 @@ var centers = [
 ];
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-    gapi.client.load('fusiontables', 'v1', initialize);
+    gapi.client.load('fusiontables', 'v1').then(initialize);
 }
 function initialize() {
     var mapOptions = {
@@ -266,4 +266,3 @@ function updateShots(value) {
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
-google.maps.event.addDomListener(window, "load", initialize);
