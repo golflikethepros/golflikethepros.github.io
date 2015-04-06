@@ -11,11 +11,7 @@ $(window).load(function () {
     }
 });
 
-function storeCookie(cookieName) {
-    var cookieValues = [];
-    for (var i = 1; i < arguments.length; i++) {
-        cookieValues.append(arguments[i]);
-    }
+function storeCookie(cookieName, cookieValues) {
     cookieValueString = cookieValues.join(",");
     $.cookie(cookieName, cookieValueString, {expires: 7});
 };
