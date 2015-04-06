@@ -65,24 +65,27 @@ function initialize() {
         streetViewControl: false
     };
 
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
     setDataToUse();
     setCurrentScores(0);
+    setupMap();
+}
+function setupMap() {
+    map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
     heatmap = new google.maps.visualization.HeatmapLayer({
         data: dataToUse,
         radius: 10,
         maxIntensity: 2
     });
-
     heatmap.setMap(map);
-}
+};
 function onDataFetched(response) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
         dataToUse = extractLocations(response.rows);
+        setupMap();
     }
 }
 
