@@ -1,5 +1,5 @@
 ﻿function doNotShow() {
-
+    $.cookie("doNotShow", "yes", { expires: 7 });
 }
 
 $(window).load(function () {
