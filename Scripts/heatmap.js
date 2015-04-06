@@ -148,6 +148,7 @@ function setInitialValues() {
     }
     if (readCookie("scores").length === 0) {
         setCurrentScores(hole);
+        updateScores(document.getElementById("scores"));
     } else {
         scores = readCookie("scores");
     }
