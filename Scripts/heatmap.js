@@ -139,7 +139,7 @@ function setInitialValues() {
     if (!rounds) {
         rounds = [0];
     }
-    hole = readCookie("hole");
+    hole = readCookie("hole")[0];
     if (!hole) {
         hole = 0;
     }
@@ -147,7 +147,7 @@ function setInitialValues() {
     if (!scores) {
         setCurrentScores(hole);
     }
-    shot = readCookie("shot");
+    shot = readCookie("shot")[0];
     if (!shot) {
         shot = 0;
     }
