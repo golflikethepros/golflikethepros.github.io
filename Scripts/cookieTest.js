@@ -12,7 +12,7 @@ $(window).load(function () {
 });
 
 function storeCookie(cookieName, cookieValues) {
-    cookieValueString = cookieValues.join(",");
+    var cookieValueString = cookieValues.join(",");
     $.cookie(cookieName, cookieValueString, {expires: 7});
 };
 
