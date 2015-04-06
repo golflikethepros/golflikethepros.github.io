@@ -21,5 +21,5 @@ function readCookie(cookieName) {
     if (cookieValueString) {
         return cookieValueString.split(",");
     }
-    return [];
+    return null;
 }
