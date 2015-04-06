@@ -77,12 +77,14 @@ function initialize() {
 }
 
 function setupMap(map) {
-    heatmap = new google.maps.visualization.HeatmapLayer({
-        data: dataToUse,
-        radius: 10,
-        maxIntensity: 2
-    });
-    heatmap.setMap(map);
+    if (dataToUse.length > 0) {
+        heatmap = new google.maps.visualization.HeatmapLayer({
+            data: dataToUse,
+            radius: 10,
+            maxIntensity: 2
+        });
+        heatmap.setMap(map);
+    }
 };
 function onDataFetched(response) {
     if (response.error) {
