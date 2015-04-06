@@ -1,13 +1,11 @@
 ﻿// Adding 500 Data Points
 var map, dataToUse, heatmap;
 var round = 0;
-//var heatMapData = GetHeatMapData();
 var years = [0];
 var rounds = [0];
 var hole = 0;
 var shot = 0;
 var scores = [0, 1, 2, 3];
-var fusionTable = true;
 var pars = [
     4,
     5,
@@ -28,6 +26,7 @@ var pars = [
     3,
     4
 ];
+
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
     new google.maps.LatLng(30.201720, -81.396194),
@@ -86,6 +85,7 @@ function setupMap(map) {
         heatmap.setMap(map);
     }
 };
+
 function onDataFetched(response) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +
@@ -111,26 +111,38 @@ function extractLocations(rows) {
     }
     return locations;
 }
+
+function buildQuery() {
+    var query = "select col4, col5 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where ";
+    for (var i = 0; i < years.length; i++) {
+        query += " col0 = '" + (years[i] + 2006) + "' OR";
+    }
+    query = query.substring(0, query.length - 2);
+    query += " and";
+
+    for (var j = 0; j < rounds.length; j++) {
+        query += " col1 = " + (rounds[j] + 1) + " OR";
+    }
+    query = query.substring(0, query.length - 2);
+    query += "and col2 = " + hole;
+    query += "and col3 = " + shot;
+
+    for (var k = 0; k < scores; k++) {
+        query += " col6 = " + (rounds[j] + 1) + " OR";
+    }
+    return query;
+};
+
 function setDataToUse() {
     dataToUse = [];
-    if (fusionTable) {
+    var query2 = buildQuery();
         var query =
        "select col4, col5, col6 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where col0 = '2006' and col1 = 1 and col2 = 1 and col3 = 1 and col6 >= 1 and col6 <= 6";
         var request = gapi.client.fusiontables.query.sqlGet({ sql: query });
         request.execute(function (response) {
             onDataFetched(response);
         });
-    } else {
-        for (var l = 0; l < years.length; l++) {
-            var year = years[l];
-            for (var i = 0; i < rounds.length; i++) {
-                var round = rounds[i];
-                for (var j = 0; j < scores.length; j++) {
-                    //dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
-                }
-            }
-        }
-    }
+    
     var innerHtml = "<h4>Current Data:</h4>Year(s):";
     for (l = 0; l < years.length; l++) {
         innerHtml += " " + (years[l] + 2006) + ",";
@@ -171,7 +183,6 @@ function updateRound(frm, reset) {
 }
 
 var allYearsSelected;
-
 function selectAllYears() {
     if (allYearsSelected == null) {
         allYearsSelected = false;
@@ -189,7 +200,6 @@ function selectAllYears() {
 }
 
 var allScoresSelected;
-
 function selectAllScores() {
     if (allScoresSelected == null) {
         allScoresSelected = false;
@@ -207,7 +217,6 @@ function selectAllScores() {
 }
 
 var allRoundsSelected;
-
 function selectAllRounds() {
     if (allRoundsSelected == null) {
         allRoundsSelected = false;
