@@ -3,7 +3,8 @@
 }
 
 $(window).load(function () {
-    if ($.cookie("doNotShow") !== "yes") {
+    var doNotShow = $.cookie("doNotShow");
+    if (doNotShow !== "yes") {
         $("#myModal").modal({
             show: true
         });
