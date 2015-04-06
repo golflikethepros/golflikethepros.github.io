@@ -18,5 +18,8 @@ function storeCookie(cookieName, cookieValues) {
 
 function readCookie(cookieName) {
     var cookieValueString = $.cookie(cookieName);
-    return cookieValueString.split(",");
+    if (cookieValueString) {
+        return cookieValueString.split(",");
+    }
+    return [];
 }
