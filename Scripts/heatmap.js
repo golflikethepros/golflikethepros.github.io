@@ -309,7 +309,9 @@ function updateScores(frm, reset) {
         }
     }
     setDataToUse();
-    heatmap.set("data", dataToUse);
+    if (heatmap) {
+        heatmap.set("data", dataToUse);
+    }
     storeCookie("scores", scores);
 }
 
