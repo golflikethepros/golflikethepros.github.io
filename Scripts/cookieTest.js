@@ -19,7 +19,12 @@ function storeCookie(cookieName, cookieValues) {
 function readCookie(cookieName) {
     var cookieValueString = $.cookie(cookieName);
     if (cookieValueString) {
-        return cookieValueString.split(",");
+        var returnArray = [];
+        var parts = cookieValueString.split(",");
+        for (var i = 0; i < parts.length; i++) {
+            returnArray[i] = parseInt(parts[i], 10);
+        }
+        return returnArray;
     }
     return [];
 }
