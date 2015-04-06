@@ -113,7 +113,7 @@ function extractLocations(rows) {
 }
 
 function buildQuery() {
-    var query = "select col5, col6 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where";
+    var query = "select col4, col5 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where";
     for (var i = 0; i < years.length; i++) {
         query += " col0 = '" + (years[i] + 2006) + "' OR";
     }
@@ -126,7 +126,7 @@ function buildQuery() {
     query = query.substring(0, query.length - 2);
     query += "and col2 = " + (hole+1);
     query += " and col3 = " + (shot+1);
-    query += " and col4 >= " + (scores[0]+1) + " and " + "col4 <= " + (scores[scores.length - 1]+1);
+    query += " and col6 >= " + (scores[0]+1) + " and " + "col6 <= " + (scores[scores.length - 1]+1);
     return query;
 };
 
