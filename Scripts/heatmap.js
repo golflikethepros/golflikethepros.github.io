@@ -7,6 +7,7 @@ var rounds = [0];
 var hole = 0;
 var shot = 0;
 var scores = [0, 1, 2, 3];
+var fusionTable = true;
 var pars = [
     4,
     5,
@@ -47,7 +48,10 @@ var centers = [
     new google.maps.LatLng(30.194632, -81.390829),
     new google.maps.LatLng(30.197012, -81.392888)
 ];
-
+function loadApi() {
+    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
+    gapi.client.load('fusiontables', 'v1', initialize);
+}
 function initialize() {
     var mapOptions = {
         zoom: 16,
@@ -70,24 +74,47 @@ function initialize() {
 
     heatmap.setMap(map);
 }
+function onDataFetched(response) {
+    if (response.error) {
+        alert('Unable to fetch data. ' + response.error.message +
+            ' (' + response.error.code + ')');
+    } else {
+        dataToUse = extractLocations(response.rows);
+    }
+}
 
-function setDataToUse() {
-    dataToUse = [];
-    /*
-    for (var l = 0; l < years.length; l++) {
-        var year = years[l];
-        for (var i = 0; i < rounds.length; i++) {
-            var round = rounds[i];
-            dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot]);
+function extractLocations(rows) {
+    var locations = [];
+    for (var i = 0; i < rows.length; ++i) {
+        var row = rows[i];
+        if (row[0]) {
+            var lat = row[0];
+            var lng = row[1];
+            if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
+                var latLng = new google.maps.LatLng(lat, lng);
+                locations.push(latLng);
+            }
         }
     }
-    */
-    for (var l = 0; l < years.length; l++) {
-        var year = years[l];
-        for (var i = 0; i < rounds.length; i++) {
-            var round = rounds[i];
-            for (var j = 0; j < scores.length; j++){
-            dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
+    return locations;
+}
+function setDataToUse() {
+    dataToUse = [];
+    if (fusionTable) {
+        var query =
+       "select col4, col5, col6 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where col0 = '2006' and col1 = 1 and col2 = 1 and col3 = 1 and col6 >= 1 and col6 <= 6";
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: query });
+        request.execute(function (response) {
+            onDataFetched(response);
+        });
+    } else {
+        for (var l = 0; l < years.length; l++) {
+            var year = years[l];
+            for (var i = 0; i < rounds.length; i++) {
+                var round = rounds[i];
+                for (var j = 0; j < scores.length; j++) {
+                    dataToUse = dataToUse.concat(heatMapData[year][round][hole][shot][scores[j]]);
+                }
             }
         }
     }
@@ -238,4 +265,5 @@ function updateShots(value) {
     heatmap.set("data", dataToUse);
 }
 
+google.maps.event.addDomListener(window, 'load', loadApi);
 google.maps.event.addDomListener(window, "load", initialize);
