@@ -50,7 +50,10 @@ var centers = [
 ];
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-    gapi.client.load('fusiontables', 'v1').then(initialize);
+    var promise = gapi.client.load('fusiontables', 'v1');
+    promise.then(function() {
+        initialize();
+    });
 }
 function initialize() {
     var mapOptions = {
