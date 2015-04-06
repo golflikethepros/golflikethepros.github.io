@@ -283,7 +283,7 @@ function updateYears(frm) {
     }
     setDataToUse();
     heatmap.set("data", dataToUse);
-    storeCookie.apply(this, "years", years);
+    storeCookie.apply(this, ["years"] + years);
 }
 
 function updateShots(value) {
