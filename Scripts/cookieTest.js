@@ -10,3 +10,17 @@ $(window).load(function () {
         });
     }
 });
+
+function storeCookie(cookieName) {
+    var cookieValues = [];
+    for (var i = 1; i < arguments.length; i++) {
+        cookieValues.append(arguments[i]);
+    }
+    cookieValueString = cookieValues.join(",");
+    $.cookie(cookieName, cookieValueString, {expires: 7});
+};
+
+function readCookie(cookieName) {
+    var cookieValueString = $.cookie(cookieName);
+    return cookieValueString.split(",");
+}

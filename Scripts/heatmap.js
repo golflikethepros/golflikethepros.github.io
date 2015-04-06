@@ -48,12 +48,11 @@ var centers = [
     new google.maps.LatLng(30.197012, -81.392888)
 ];
 function loadApi() {
-//    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-//    var promise = gapi.client.load('fusiontables', 'v1');
-//    promise.then(function() {
-//        initialize();
-    //    });
-    initialize();
+    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
+    var promise = gapi.client.load('fusiontables', 'v1');
+    promise.then(function() {
+        initialize();
+        });
 }
 function createMap() {
     var mapOptions = {
@@ -202,6 +201,7 @@ function selectAllYears() {
     }
     allYearsSelected = !allYearsSelected;
     updateYears(yearForm, false);
+    storeCookie.apply(this,"years",years);
 }
 
 var allScoresSelected;

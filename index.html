@@ -7,11 +7,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=ftOnLoadClientApi">
     </script>
-    <script src="Scripts/heatmap.js"></script>
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/jquery.cookie.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/cookieTest.js"></script>
+    <script src="Scripts/heatmap.js"></script>
     <script src="Scripts/snap.js"></script>
     <link type="text/css" rel="stylesheet" href="Content/bootstrap.css"/>
     <link type="text/css" rel="stylesheet" href="Content/bootstrap-theme.css"/>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" onclick="doNotShow()" data-dismiss="modal">Close & Do not show this message again</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -43,7 +43,6 @@
 <hr class="small-hr"/>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 <div class="panel panel-default panel-body-style">
-    <button class="btn-default" onclick="showModal()">Open modal</button>
     <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
