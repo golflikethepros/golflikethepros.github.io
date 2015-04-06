@@ -139,10 +139,10 @@ function validData() {
 function setDataToUse() {
     dataToUse = [];
     if (validData()) {
-        //var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
-//        request.execute(function(response) {
-//            onDataFetched(response);
-//        });
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
+        request.execute(function(response) {
+            onDataFetched(response);
+        });
     }
 }
 
@@ -201,7 +201,6 @@ function selectAllYears() {
     }
     allYearsSelected = !allYearsSelected;
     updateYears(yearForm, false);
-    storeCookie.apply(this,"years",years);
 }
 
 var allScoresSelected;
@@ -284,6 +283,7 @@ function updateYears(frm) {
     }
     setDataToUse();
     heatmap.set("data", dataToUse);
+    storeCookie.apply(this, "years", years);
 }
 
 function updateShots(value) {
