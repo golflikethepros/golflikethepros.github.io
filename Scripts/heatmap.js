@@ -130,14 +130,16 @@ function buildQuery() {
     for (var k = 0; k < scores.length; k++) {
         query += " col6 = " + (scores[k] + 1) + " OR";
     }
+
+    query = query.substring(0, query.length - 2);
     return query;
 };
 
 function setDataToUse() {
     dataToUse = [];
-    var query2 = buildQuery();
         var query =
        "select col4, col5, col6 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where col0 = '2006' and col1 = 1 and col2 = 1 and col3 = 1 and col6 >= 1 and col6 <= 6";
+        query = buildQuery();
         var request = gapi.client.fusiontables.query.sqlGet({ sql: query });
         request.execute(function (response) {
             onDataFetched(response);
