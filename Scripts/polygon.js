@@ -1,6 +1,6 @@
 ﻿// Adding 500 Data Points
 var map, polygons;
-var rounds, years, hole, shot, scores;
+var hole = 0;
 
 var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
 
@@ -53,10 +53,15 @@ function initialize() {
     setupMap(map);
 }
 
-function setupMap(map) {
+function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
         var polygon = new google.maps.Polygon(polygons[i]);
         polygon.setMap(map);
+    }
+    if (latSum == 0) {
+        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
+    } else {
+        map.setCenter(new google.maps.LatLng(latSum/latCount, longSum/longCount));
     }
 };
 
@@ -67,12 +72,21 @@ function onDataFetched(response) {
             ' (' + response.error.code + ')');
     } else {
         polygons = extractPolygons(response.rows);
-        setupMap(map);
+        setupMap();
     }
 }
 
+var latSum = 0;
+var longSum = 0;
+var latCount = 0;
+var longCount = 0;
+
 function extractPolygons(rows) {
     var polygons = [];
+    latSum = 0;
+    longSum = 0;
+    latCount = 0;
+    longCount = 0;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -82,6 +96,12 @@ function extractPolygons(rows) {
             new google.maps.LatLng(row[4], row[5]),
             new google.maps.LatLng(row[6], row[7])
             ];
+
+            latSum += row[0] + row[2] + row[4] + row[6];
+            latCount += 4;
+            latSum += row[1] + row[3] + row[5] + row[7];
+            latCount += 4;
+
             var score = row[8];
             var color = colors[Math.floor(score)];
                 polygons.push({
@@ -98,7 +118,8 @@ function extractPolygons(rows) {
 }
 
 function buildQuery() {
-    var query = "select col0, col1, col2, col3, col4, col5, col6, col7, col8 from 1y-4RAe-ep4sZ-_iD8HKOpFnKJq00ZD1rVVofUmSu";
+    var query = "select col0, col1, col2, col3, col4, col5, col6, col7, col8 from 1jLt5HI9FJmFoN9_DqQdQ4HoYPdw_eepDppWyBu34";
+    query += " where col9 = " + hole
     return query;
 };
 
@@ -108,6 +129,12 @@ function setDataToUse() {
         request.execute(function(response) {
             onDataFetched(response);
         });
+}
+
+function updateHoles(holeNum) {
+    hole = holeNum;
+    setDataToUse();
+    setupMap();
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
