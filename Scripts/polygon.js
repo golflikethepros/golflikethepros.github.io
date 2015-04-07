@@ -131,7 +131,7 @@ function unsetOldPolygons() {
     polygons = [];
 }
 
-var bounds;
+var bounds = new google.maps.LatLngBounds();
 
 
 function extractPolygons(rows) {
@@ -148,7 +148,7 @@ function extractPolygons(rows) {
             ];
 
             for (var j = 0; j < polygonPoints.length; j++) {
-                bounds.extend(polygonPoints[i]);
+                bounds.extend(polygonPoints[j]);
             }
 
             var score = 10 - (10 / row[8]);
