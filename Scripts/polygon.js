@@ -119,7 +119,7 @@ function extractPolygons(rows) {
 
 function buildQuery() {
     var query = "select col0, col1, col2, col3, col4, col5, col6, col7, col8 from 1jLt5HI9FJmFoN9_DqQdQ4HoYPdw_eepDppWyBu34";
-    query += " where col9 = " + hole
+    query += " where col9 = " + (hole+1);
     return query;
 };
 
