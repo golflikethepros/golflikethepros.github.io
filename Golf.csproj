@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ball.ico" />
+    <Content Include="player.html" />
     <Content Include="polygon.html" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -64,6 +65,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="index.html" />
     <Content Include="Scripts\cookieHandler.js" />
+    <Content Include="Scripts\player.js" />
     <Content Include="Scripts\polygon.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\rainbowvis.js" />

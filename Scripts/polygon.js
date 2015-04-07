@@ -26,28 +26,6 @@ var pars = [
     3,
     4
 ];
-var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
-
-var centers = [
-    new google.maps.LatLng(30.202304, -81.395295),
-    new google.maps.LatLng(30.201720, -81.396194),
-    new google.maps.LatLng(30.199716, -81.397454),
-    new google.maps.LatLng(30.197231, -81.398200),
-    new google.maps.LatLng(30.195037, -81.396186),
-    new google.maps.LatLng(30.193380, -81.397668),
-    new google.maps.LatLng(30.192231, -81.397023),
-    new google.maps.LatLng(30.192359, -81.392582),
-    new google.maps.LatLng(30.195313, -81.394050),
-    new google.maps.LatLng(30.199874, -81.389663),
-    new google.maps.LatLng(30.199324, -81.389044),
-    new google.maps.LatLng(30.199078, -81.387457),
-    new google.maps.LatLng(30.200295, -81.386604),
-    new google.maps.LatLng(30.196990, -81.387453),
-    new google.maps.LatLng(30.196843, -81.390159),
-    new google.maps.LatLng(30.195806, -81.391035),
-    new google.maps.LatLng(30.194632, -81.390829),
-    new google.maps.LatLng(30.197012, -81.392888)
-];
 
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');

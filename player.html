@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="icon" type="image/ico" href="Content/ball.ico"/>
+    <title>TPC Sawgrass Shot Data</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=ftOnLoadClientApi">
+    
+    </script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/jquery.cookie.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/cookieHandler.js"></script>
+    <script src="Scripts/rainbowvis.js"></script>
+    <script src="Scripts/polygon.js"></script>
+    <script src="Scripts/snap.js"></script>
+    <link type="text/css" rel="stylesheet" href="Content/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="Content/bootstrap-theme.css"/>
+    <link type="text/css" rel="stylesheet" href="Content/snap.css"/>
+    <link type="text/css" rel="stylesheet" href="Content/Site.css"/>
+</head>
+<body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Golf Like the Pros</h4>
+            </div>
+            <div class="modal-body">
+                This website is dedicated to helping Golfers and statisticans get direct access to golf data. The site currently only allows analysis of TPC Sawgrass, but that will be improved upon in coming interations.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick=" doNotShow() " data-dismiss="modal">Close & Do not show this message again</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="snap-drawers blue-bg">
+    <div class="not-all-the-way2 snap-content snap-drawer-left ">
+        <div class="not-all-the-way">
+            <h3>TPC Sawgrass</h3>
+            <hr class="small-hr"/>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                Select Hole
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <form role="form" id="holes">
+                                <div class="radio">
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(0) " id="hole1" checked/>Hole 1</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(1) " id="hole2"/>Hole 2</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(2) " id="hole3"/>Hole 3</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(3) " id="hole4"/>Hole 4</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(4) " id="hole5"/>Hole 5</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(5) " id="hole6"/>Hole 6</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(6) " id="hole7"/>Hole 7</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(7) " id="hole8"/>Hole 8</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(8) " id="hole9"/>Hole 9</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(9) " id="hole10"/>Hole 10</label> <br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(10) " id="hole11"/>Hole 11</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(11) " id="hole12"/>Hole 12</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(12) " id="hole13"/>Hole 13</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(13) " id="hole14"/>Hole 14</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(14) " id="hole15"/>Hole 15</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(15) " id="hole16"/>Hole 16</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(16) " id="hole17"/>Hole 17</label><br/>
+                                    <label><input type="radio" name="holes" onclick=" updateHoles(17) " id="hole18"/>Hole 18</label><br/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default panel-body-style">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                Other Options
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+                            <a class="btn btn-default" onclick=" closeSettings() ">Close Settings Window</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snap-content snap-drawer-right"></div>
+</div>
+<div id="content" class="snap-content" data-snap-ignore="true">
+    <div id="toolbar">
+        <a id="settings-button" onclick=" openLeft() " title="Click here to open/close settings menu">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <h1>TPC Sawgrass Shot Data</h1>
+    </div>
+    <div id="map-canvas"></div>
+</div>
+<script type="text/javascript">
+    var snapper = new Snap({
+        element: document.getElementById("content"),
+        hyperextensible: false,
+        disable: "right"
+    });
+    var opened = false;
+
+    function openLeft() {
+        if (opened) {
+            snapper.close();
+        } else {
+            snapper.open('left');
+        }
+        opened = !opened;
+    }
+
+    function closeSettings() {
+        snapper.close();
+    }
+
+    $.cookie.json = true;
+</script>
+</body>
+</html>
