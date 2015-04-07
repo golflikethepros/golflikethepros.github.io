@@ -103,7 +103,7 @@ function extractPolygons(rows) {
             polygonPoints.push(new google.maps.LatLng(row[6], row[7]));
             var score = row[8];
             var color = colors[Math.floor(score)];
-            var opacity = score === 0 ? 0.0 : 0.5;
+            var opacity = score === 0 ? 0.0 : 1;
             polygons.push({
                 paths: polygonPoints,
                 strokeColor: "FF0000",
