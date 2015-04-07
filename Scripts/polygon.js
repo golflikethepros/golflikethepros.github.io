@@ -97,7 +97,7 @@ function extractPolygons(rows) {
         var row = rows[i];
         if (row[0]) {
             var polygonPoints = [];
-            polygonPoints.append(google.maps.LatLng(row[0], row[1]));
+            polygonPoints.append(new google.maps.LatLng(row[0], row[1]));
             polygonPoints.append(new google.maps.LatLng(row[2], row[3]));
             polygonPoints.append(new google.maps.LatLng(row[4], row[5]));
             polygonPoints.append(new google.maps.LatLng(row[6], row[7]));
