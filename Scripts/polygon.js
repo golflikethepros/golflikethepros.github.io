@@ -55,8 +55,7 @@ function initialize() {
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
-        var polygon = new google.maps.Polygon(polygons[i]);
-        polygon.setMap(map);
+        polygons[i].setMap(map);
     }
 //    if (latSum == 0) {
 //        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
@@ -80,8 +79,7 @@ function onDataFetched(response) {
 
 function unsetOldPolygons() {
     for (var i = 0; i < polygons.length; i++) {
-        var polygon = new google.maps.Polygon(polygons[i]);
-        polygon.setMap(null);
+        polygons[i].setMap(null);
     }
     polygons = [];
 }
@@ -114,14 +112,14 @@ function extractPolygons(rows) {
 
             var score = row[8];
             var color = colors[Math.floor(score)];
-                polygons.push({
+            polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
                     strokeOpacity: .5,
                     strokeWeight: 1,
                     fillColor: color,
                     fillOpacity: .5
-                });
+                }));
         }
     }
 }
