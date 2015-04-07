@@ -68,10 +68,8 @@ function createMap() {
 }
 
 function initialize() {
-    setInitialValues();
     var map = createMap();
     setDataToUse();
-    setCurrentScores(0);
     setupMap(map);
 }
 
@@ -125,7 +123,7 @@ function buildQuery() {
 };
 
 function setDataToUse() {
-    dataToUse = [];
+    polygons = [];
     if (validData()) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
         request.execute(function(response) {
