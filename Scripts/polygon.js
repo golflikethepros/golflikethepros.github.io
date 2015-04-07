@@ -98,6 +98,7 @@ function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
+        
     }
 //    if (latSum == 0) {
 //        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
@@ -122,6 +123,7 @@ function onDataFetched(response) {
 function unsetOldPolygons() {
     for (var i = 0; i < polygons.length; i++) {
         polygons[i].setMap(null);
+        clearListeners(polygons[i], 'click');
     }
     polygons = [];
 }
