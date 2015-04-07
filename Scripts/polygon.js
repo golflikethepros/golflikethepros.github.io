@@ -101,7 +101,6 @@ function setupMap() {
     }
     if (polygons.length > 0) {
         map.setZoom(19);
-        var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(latMin, longMin), new google.maps.LatLng(latMax, longMax));
         map.panTo(bounds.getCenter());
     }
 //    if (latSum == 0) {
@@ -132,15 +131,12 @@ function unsetOldPolygons() {
     polygons = [];
 }
 
-var latMin, latMax, longMin, longMax;
+var bounds;
 
 
 function extractPolygons(rows) {
     unsetOldPolygons();
-    latMin = 5000;
-    latMax = -5000;
-    longMin = 5000;
-    longMax = -5000;
+    bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -151,23 +147,9 @@ function extractPolygons(rows) {
             new google.maps.LatLng(row[6], row[7])
             ];
 
-            latMin = row[0] < latMin ? row[0] : latMin;
-            latMin = row[2] < latMin ? row[2] : latMin;
-            latMin = row[4] < latMin ? row[4] : latMin;
-            latMin = row[6] < latMin ? row[6] : latMin;
-            latMax = row[6] > latMax ? row[6] : latMax;
-            latMax = row[4] > latMax ? row[4] : latMax;
-            latMax = row[2] > latMax ? row[2] : latMax;
-            latMax = row[0] > latMax ? row[0] : latMax;
-
-            longMin = row[1] < longMin ? row[1] : longMin;
-            longMin = row[3] < longMin ? row[3] : longMin;
-            longMin = row[5] < longMin ? row[5] : longMin;
-            longMin = row[7] < longMin ? row[7] : longMin;
-            longMax = row[7] > longMax ? row[7] : longMax;
-            longMax = row[5] > longMax ? row[5] : longMax;
-            longMax = row[3] > longMax ? row[3] : longMax;
-            longMax = row[1] > longMax ? row[1] : longMax;
+            for (var j = 0; j < polygonPoints.length; j++) {
+                bounds.extend(polygonPoints[i]);
+            }
 
             var score = 10 - (10 / row[8]);
             var color = "#" + gradients[pars[hole]].colourAt(score);
