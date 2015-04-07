@@ -116,12 +116,13 @@ function extractPolygons(rows) {
             latCount += 4;
 
             var score = row[8];
+            var color = blueWhiteRed.colourAt(score);
             polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
                     strokeOpacity: .5,
                     strokeWeight: 1,
-                    fillColor: blueWhiteRed.colourAt(score),
+                    fillColor: color,
                     fillOpacity: .5
                 }));
         }
