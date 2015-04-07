@@ -73,7 +73,7 @@ function onDataFetched(response) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
-        polygons = extractPolygons(response.rows);
+        extractPolygons(response.rows);
         setupMap();
     }
 }
