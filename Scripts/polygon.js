@@ -91,7 +91,7 @@ function extractPolygons(rows) {
                 strokeOpacity: 0.0,
                 strokeWeight: 1,
                 fillColor: color,
-                fillOpacity: 1.0 
+                fillOpacity: .5
             });
         }
     }
