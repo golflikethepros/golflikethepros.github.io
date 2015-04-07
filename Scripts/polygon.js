@@ -61,7 +61,9 @@ function setupMap() {
     if (latSum == 0) {
         map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
     } else {
-        map.setCenter(new google.maps.LatLng(latSum/latCount, longSum/longCount));
+        var lat = latSum / latCount;
+        var long = longSum / longCount;
+        map.setCenter(new google.maps.LatLng(lat, long));
     }
 };
 
