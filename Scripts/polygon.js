@@ -124,12 +124,10 @@ function buildQuery() {
 
 function setDataToUse() {
     polygons = [];
-    if (validData()) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
         request.execute(function(response) {
             onDataFetched(response);
         });
-    }
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
