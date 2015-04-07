@@ -1,5 +1,5 @@
 ﻿// Adding 500 Data Points
-var map, dataToUse, heatmap;
+var map, polygons;
 var rounds, years, hole, shot, scores;
 var pars = [
     4,
@@ -22,6 +22,8 @@ var pars = [
     4
 ];
 
+var colors = ["0001E5", "0071E0", "00DBD9", "00D669", "02D200", "69CD00", "C35E00", "BF0003"];
+
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
     new google.maps.LatLng(30.201720, -81.396194),
@@ -42,12 +44,13 @@ var centers = [
     new google.maps.LatLng(30.194632, -81.390829),
     new google.maps.LatLng(30.197012, -81.392888)
 ];
+
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
     promise.then(function() {
         initialize();
-        });
+    });
 }
 
 function createMap() {
@@ -73,13 +76,9 @@ function initialize() {
 }
 
 function setupMap(map) {
-    if (dataToUse.length > 0) {
-        heatmap = new google.maps.visualization.HeatmapLayer({
-            data: dataToUse,
-            radius: 10,
-            maxIntensity: 2
-        });
-        heatmap.setMap(map);
+    for (var i = 0; i < polygons.length; i++) {
+        var polygon = new google.maps.Polygon(polygons[i]);
+        polygon.setMap(map);
     }
 };
 
@@ -89,45 +88,39 @@ function onDataFetched(response) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
-        dataToUse = extractLocations(response.rows);
+        polygons = extractLocations(response.rows);
         setupMap(map);
-        setCurrentDataHtml();
     }
 }
 
-function extractLocations(rows) {
-    var locations = [];
+function extractPolygons(rows) {
+    var polygons = [];
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
-            var lat = row[0];
-            var lng = row[1];
-            if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
-                var latLng = new google.maps.LatLng(lat, lng);
-                locations.push(latLng);
-            }
+            var polygonPoints = [];
+            polygonPoints.append(google.maps.LatLng(row[0], row[1]));
+            polygonPoints.append(new google.maps.LatLng(row[2], row[3]));
+            polygonPoints.append(new google.maps.LatLng(row[4], row[5]));
+            polygonPoints.append(new google.maps.LatLng(row[6], row[7]));
+            var score = row[8];
+            var color = colors[Math.floor(score)];
+            var opacity = score === 0 ? 0.0 : 0.5;
+            polygons.append({
+                paths: polygonPoints,
+                strokeColor: "FF0000",
+                strokeOpacity: 0.0,
+                strokeWeight: 1,
+                fillColor: color,
+                fillOpacity: opacity
+            });
         }
     }
-    return locations;
+    return polygons;
 }
 
 function buildQuery() {
-    var query = "select col4, col5 from 1TFWBEKj6Xf-M5xeCcgNgl3SkTvb_lhVPy9riUzXO where";
-    query += " col0 in (";
-    for (var i = 0; i < years.length; i++) {
-        query += "'" + (years[i] + 2006) + "',";
-    }
-    query = query.substring(0, query.length - 1);
-    query += ") and";
-    query += " col1 in (";
-    for (var j = 0; j < rounds.length; j++) {
-        query += (rounds[j] + 1) + ",";
-    }
-    query = query.substring(0, query.length - 1);
-    query += ") ";
-    query += "and col2 = " + (hole+1);
-    query += " and col3 = " + (shot+1);
-    query += " and col6 >= " + (scores[0]+1) + " and " + "col6 <= " + (scores[scores.length - 1]+1);
+    var query = "select col0, col1, col2, col3, col4, col5, col6, col7, col8 from 1y-4RAe-ep4sZ-_iD8HKOpFnKJq00ZD1rVVofUmSu";
     return query;
 };
 
@@ -140,4 +133,5 @@ function setDataToUse() {
         });
     }
 }
+
 google.maps.event.addDomListener(window, 'load', loadApi);
