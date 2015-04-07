@@ -83,11 +83,21 @@ function initialize() {
     var map = createMap();
     setDataToUse();
     setupMap(map);
+    infoWindow = new google.maps.InfoWindow();
+}
+var infoWindow;
+
+function showAverageScore(event) {
+    var contentString = "<b>Average Score:</b> " + this.get("Score");
+    infoWindow.setContent(contentString);
+    infoWindow.setPosition(event.latLng);
+    infoWindow.open(map);
 }
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
         polygons[i].setMap(map);
+        google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
 //    if (latSum == 0) {
 //        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
@@ -144,14 +154,18 @@ function extractPolygons(rows) {
 
             var score = 10 - (10 / row[8]);
             var color = "#" + gradients[pars[hole]].colourAt(score);
-            polygons.push(new google.maps.Polygon({
-                    paths: polygonPoints,
-                    strokeColor: "000000",
-                    strokeOpacity: .5,
-                    strokeWeight: 1,
-                    fillColor: color,
-                    fillOpacity: 1
-                }));
+            var polygon = new google.maps.Polygon({
+                paths: polygonPoints,
+                strokeColor: "000000",
+                strokeOpacity: .5,
+                strokeWeight: 1,
+                fillColor: color,
+                fillOpacity: 1
+            });
+            polygon.set("Score", score);
+            polygons.push(polygon);
+
+
         }
     }
 }
