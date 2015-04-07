@@ -143,7 +143,7 @@ function extractPolygons(rows) {
             latCount += 4;
 
             var score = 10 - (10 / row[8]);
-            var color = "#" + gradients[par[hole]].colourAt(score);
+            var color = "#" + gradients[pars[hole]].colourAt(score);
             polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
