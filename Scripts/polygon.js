@@ -162,7 +162,7 @@ function extractPolygons(rows) {
                 strokeOpacity: .5,
                 strokeWeight: 1,
                 fillColor: color,
-                fillOpacity: 1
+                fillOpacity: .5
             });
             polygon.set("Score", score);
             polygons.push(polygon);
