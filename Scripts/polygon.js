@@ -97,10 +97,10 @@ function extractPolygons(rows) {
         var row = rows[i];
         if (row[0]) {
             var polygonPoints = [];
-            polygonPoints.append(new google.maps.LatLng(row[0], row[1]));
-            polygonPoints.append(new google.maps.LatLng(row[2], row[3]));
-            polygonPoints.append(new google.maps.LatLng(row[4], row[5]));
-            polygonPoints.append(new google.maps.LatLng(row[6], row[7]));
+            polygonPoints.push(new google.maps.LatLng(row[0], row[1]));
+            polygonPoints.push(new google.maps.LatLng(row[2], row[3]));
+            polygonPoints.push(new google.maps.LatLng(row[4], row[5]));
+            polygonPoints.push(new google.maps.LatLng(row[6], row[7]));
             var score = row[8];
             var color = colors[Math.floor(score)];
             var opacity = score === 0 ? 0.0 : 0.5;
