@@ -66,6 +66,7 @@
     <Content Include="Scripts\cookieHandler.js" />
     <Content Include="Scripts\polygon.js" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\rainbowvis.js" />
     <Content Include="Scripts\snap.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

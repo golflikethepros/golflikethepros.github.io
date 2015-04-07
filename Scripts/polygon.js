@@ -4,6 +4,8 @@ var hole = 0;
 
 var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
 
+var blueWhiteRed;
+
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
     new google.maps.LatLng(30.201720, -81.396194),
@@ -28,7 +30,10 @@ var centers = [
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function() {
+    promise.then(function () {
+        blueWhiteRed = new Rainbow();
+        blueWhiteRed.setSpectrum('blue', 'white', 'red');
+        blueWhiteRed.setNumberRange(0, 10);
         initialize();
     });
 }
@@ -111,13 +116,12 @@ function extractPolygons(rows) {
             latCount += 4;
 
             var score = row[8];
-            var color = colors[Math.floor(score)];
             polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
                     strokeOpacity: .5,
                     strokeWeight: 1,
-                    fillColor: color,
+                    fillColor: blueWhiteRed.colourAt(score),
                     fillOpacity: .5
                 }));
         }
