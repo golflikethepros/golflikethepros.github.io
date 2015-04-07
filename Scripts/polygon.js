@@ -1,5 +1,5 @@
 ﻿// Adding 500 Data Points
-var map, polygons;
+var map, polygons = [];
 var hole = 0;
 
 var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
