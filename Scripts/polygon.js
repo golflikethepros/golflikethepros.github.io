@@ -98,8 +98,11 @@ function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
-        
     }
+    map.panToBounds(new google.maps.LatLngBounds(
+        new google.maps.LatLng(latMin,longMin),
+        new google.maps.LatLng(latMax,longMax)
+        ));
 //    if (latSum == 0) {
 //        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
 //    } else {
@@ -128,17 +131,15 @@ function unsetOldPolygons() {
     polygons = [];
 }
 
-var latSum = 0;
-var longSum = 0;
-var latCount = 0;
-var longCount = 0;
+var latMin, latMax, longMin, longMax;
+
 
 function extractPolygons(rows) {
     unsetOldPolygons();
-    latSum = 0;
-    longSum = 0;
-    latCount = 0;
-    longCount = 0;
+    latMin = 5000;
+    latMax = -5000;
+    longMin = 5000;
+    longMax = -5000;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -149,10 +150,23 @@ function extractPolygons(rows) {
             new google.maps.LatLng(row[6], row[7])
             ];
 
-            latSum += row[0] + row[2] + row[4] + row[6];
-            latCount += 4;
-            latSum += row[1] + row[3] + row[5] + row[7];
-            latCount += 4;
+            latMin = row[0] < latMin ? row[0] : latMin;
+            latMin = row[2] < latMin ? row[2] : latMin;
+            latMin = row[4] < latMin ? row[4] : latMin;
+            latMin = row[6] < latMin ? row[6] : latMin;
+            latMax = row[6] < latMax ? row[6] : latMax;
+            latMax = row[4] < latMax ? row[4] : latMax;
+            latMax = row[2] < latMax ? row[2] : latMax;
+            latMax = row[0] < latMax ? row[0] : latMax;
+
+            longMin = row[1] < longMin ? row[1] : longMin;
+            longMin = row[3] < longMin ? row[3] : longMin;
+            longMin = row[5] < longMin ? row[5] : longMin;
+            longMin = row[7] < longMin ? row[7] : longMin;
+            longMax = row[7] < longMax ? row[7] : longMax;
+            longMax = row[5] < longMax ? row[5] : longMax;
+            longMax = row[3] < longMax ? row[3] : longMax;
+            longMax = row[1] < longMax ? row[1] : longMax;
 
             var score = 10 - (10 / row[8]);
             var color = "#" + gradients[pars[hole]].colourAt(score);
