@@ -84,14 +84,14 @@ function extractPolygons(rows) {
             ];
             var score = row[8];
             var color = colors[Math.floor(score)];
-            polygons.push({
-                paths: polygonPoints,
-                strokeColor: "FF0000",
-                strokeOpacity: 0.0,
-                strokeWeight: 1,
-                fillColor: color,
-                fillOpacity: score == 0 ? 0.0 : .5
-            });
+                polygons.push({
+                    paths: polygonPoints,
+                    strokeColor: "000000",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+                    fillColor: color,
+                    fillOpacity: .5
+                });
         }
     }
     return polygons;
