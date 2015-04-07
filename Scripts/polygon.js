@@ -44,7 +44,9 @@ function showAverageScore(event) {
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
-        polygons[i].setoptions({ fillColor: gradient.getColourAt(polygons[i].get("score")) });
+        polygons[i].setOptions({
+            fillColor: gradient.getColourAt(polygons[i].get("score"))
+        });
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
