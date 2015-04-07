@@ -99,6 +99,7 @@ function setupMap() {
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
+    map.setZoom(18);
     map.panToBounds(new google.maps.LatLngBounds(
         new google.maps.LatLng(latMin,longMin),
         new google.maps.LatLng(latMax,longMax)
