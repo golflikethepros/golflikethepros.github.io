@@ -2,7 +2,7 @@
 var map, polygons;
 var rounds, years, hole, shot, scores;
 
-var colors = ["#0000E5", "#3600E0", "#6C00DB", "#9F00D6", "#CF00D2", "#CD0096", "#C80066", "#C30033", "#BF0003"];
+var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
 
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
