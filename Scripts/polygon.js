@@ -143,4 +143,5 @@ function updateHoles(holeNum) {
     setupMap();
 }
 
+
 google.maps.event.addDomListener(window, 'load', loadApi);
