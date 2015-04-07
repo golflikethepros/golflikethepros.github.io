@@ -160,14 +160,14 @@ function extractPolygons(rows) {
             latMax = row[2] < latMax ? row[2] : latMax;
             latMax = row[0] < latMax ? row[0] : latMax;
 
-            longMin = row[1] < longMin ? row[1] : longMin;
-            longMin = row[3] < longMin ? row[3] : longMin;
-            longMin = row[5] < longMin ? row[5] : longMin;
-            longMin = row[7] < longMin ? row[7] : longMin;
-            longMax = row[7] < longMax ? row[7] : longMax;
-            longMax = row[5] < longMax ? row[5] : longMax;
-            longMax = row[3] < longMax ? row[3] : longMax;
-            longMax = row[1] < longMax ? row[1] : longMax;
+            longMin = row[1] > longMin ? row[1] : longMin;
+            longMin = row[3] > longMin ? row[3] : longMin;
+            longMin = row[5] > longMin ? row[5] : longMin;
+            longMin = row[7] > longMin ? row[7] : longMin;
+            longMax = row[7] > longMax ? row[7] : longMax;
+            longMax = row[5] > longMax ? row[5] : longMax;
+            longMax = row[3] > longMax ? row[3] : longMax;
+            longMax = row[1] > longMax ? row[1] : longMax;
 
             var score = 10 - (10 / row[8]);
             var color = "#" + gradients[pars[hole]].colourAt(score);
