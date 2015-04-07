@@ -104,7 +104,7 @@ function extractPolygons(rows) {
             ];
             var score = row[8];
             var color = colors[Math.floor(score)];
-            var opacity = score === 0 ? 0.0 : 1;
+            var opacity = Math.floor(score) === 0 ? 0.0 : 1;
             polygons.push({
                 paths: polygonPoints,
                 strokeColor: "FF0000",
