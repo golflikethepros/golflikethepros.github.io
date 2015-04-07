@@ -83,6 +83,7 @@ function unsetOldPolygons() {
         var polygon = new google.maps.Polygon(polygons[i]);
         polygon.setMap(null);
     }
+    polygons = [];
 }
 
 var latSum = 0;
@@ -123,7 +124,6 @@ function extractPolygons(rows) {
                 });
         }
     }
-    return polygons;
 }
 
 function buildQuery() {
@@ -133,7 +133,6 @@ function buildQuery() {
 };
 
 function setDataToUse() {
-    polygons = [];
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
         request.execute(function(response) {
             onDataFetched(response);
