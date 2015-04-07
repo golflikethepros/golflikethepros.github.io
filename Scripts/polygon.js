@@ -87,8 +87,8 @@ function extractPolygons(rows) {
                 polygons.push({
                     paths: polygonPoints,
                     strokeColor: "000000",
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2,
+                    strokeOpacity: .75,
+                    strokeWeight: 1,
                     fillColor: color,
                     fillOpacity: .5
                 });
