@@ -116,7 +116,7 @@ function extractPolygons(rows) {
             latCount += 4;
 
             var score = row[8];
-            var color = blueWhiteRed.colourAt(score);
+            var color = "#" + blueWhiteRed.colourAt(score);
             polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
