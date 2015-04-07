@@ -1,44 +1,14 @@
 ﻿// Adding 500 Data Points
 var map, polygons = [];
 var hole = 0;
-var gradients = {
-    3: new Rainbow(),
-    4: new Rainbow(),
-    5: new Rainbow()
-};
-var pars = [
-    4,
-    5,
-    3,
-    4,
-    4,
-    4,
-    4,
-    3,
-    5,
-    4,
-    5,
-    4,
-    3,
-    4,
-    4,
-    5,
-    3,
-    4
-];
+var gradient = new Rainbow();
 
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
     promise.then(function () {
         
-        gradients[3].setSpectrum('blue', 'white', 'red');
-        gradients[3].setNumberRange(4, 10);
-        gradients[4].setSpectrum('blue', 'white', 'red');
-        gradients[4].setNumberRange(2, 10);
-        gradients[5].setSpectrum('blue', 'white', 'red');
-        gradients[5].setNumberRange(0, 10);
-
+        gradient.setSpectrum('blue', 'white', 'red');
         initialize();
     });
 }
@@ -66,7 +36,7 @@ function initialize() {
 var infoWindow;
 
 function showAverageScore(event) {
-    var contentString = "<b>Average Score:</b> " + (10-this.get("Score"));
+    var contentString = "<b>Average Score:</b> " + (10-this.get("score"));
     infoWindow.setContent(contentString);
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
@@ -74,6 +44,7 @@ function showAverageScore(event) {
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
+        polygons[i].set("fillColor",gradient.getColourAt(polygons[i].get("score")));
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
@@ -115,6 +86,8 @@ var bounds = new google.maps.LatLngBounds();
 function extractPolygons(rows) {
     unsetOldPolygons();
     bounds = new google.maps.LatLngBounds();
+    var minAvg = 5000;
+    var maxAvg = -5000;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -130,21 +103,22 @@ function extractPolygons(rows) {
             }
 
             var score = 10 - (10 / row[8]);
-            var color = "#" + gradients[pars[hole]].colourAt(score);
+            minAvg = score < minAvg ? score : minAvg;
+            maxAvg = score > maxAvg ? score : maxAvg;
+
             var polygon = new google.maps.Polygon({
                 paths: polygonPoints,
-                strokeColor: "000000",
+                strokeColor: "#000000",
                 strokeOpacity: .5,
                 strokeWeight: 1,
-                fillColor: color,
+                fillColor: "#000000",
                 fillOpacity: .5
             });
-            polygon.set("Score", score);
+            polygon.set("score", score);
             polygons.push(polygon);
-
-
         }
     }
+    gradient.setNumberRange(minAvg, maxAvg);
 }
 
 function buildQuery() {
