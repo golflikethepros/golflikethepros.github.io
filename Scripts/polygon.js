@@ -22,7 +22,7 @@ var pars = [
     4
 ];
 
-var colors = ["0001E5", "0071E0", "00DBD9", "00D669", "02D200", "69CD00", "C35E00", "BF0003"];
+var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
 
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
@@ -96,11 +96,12 @@ function extractPolygons(rows) {
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
-            var polygonPoints = [];
-            polygonPoints.push(new google.maps.LatLng(row[0], row[1]));
-            polygonPoints.push(new google.maps.LatLng(row[2], row[3]));
-            polygonPoints.push(new google.maps.LatLng(row[4], row[5]));
-            polygonPoints.push(new google.maps.LatLng(row[6], row[7]));
+            var polygonPoints = [
+            new google.maps.LatLng(row[0], row[1]),
+            new google.maps.LatLng(row[2], row[3]),
+            new google.maps.LatLng(row[4], row[5]),
+            new google.maps.LatLng(row[6], row[7])
+            ];
             var score = row[8];
             var color = colors[Math.floor(score)];
             var opacity = score === 0 ? 0.0 : 1;
