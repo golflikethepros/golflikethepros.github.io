@@ -58,13 +58,13 @@ function setupMap() {
         var polygon = new google.maps.Polygon(polygons[i]);
         polygon.setMap(map);
     }
-    if (latSum == 0) {
-        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
-    } else {
-        var lat = latSum / latCount;
-        var long = longSum / longCount;
-        map.setCenter(new google.maps.LatLng(lat, long));
-    }
+//    if (latSum == 0) {
+//        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
+//    } else {
+//        var lat = latSum / latCount;
+//        var long = longSum / longCount;
+//        map.setCenter(new google.maps.LatLng(lat, long));
+//    }
 };
 
 
