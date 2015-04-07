@@ -99,9 +99,11 @@ function setupMap() {
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
-    map.setZoom(19);
-    var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(latMin,longMin),new google.maps.LatLng(latMax,longMax));
-    map.panTo(bounds.getCenter());
+    if (polygons.length > 0) {
+        map.setZoom(19);
+        var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(latMin, longMin), new google.maps.LatLng(latMax, longMax));
+        map.panTo(bounds.getCenter());
+    }
 //    if (latSum == 0) {
 //        map.setCenter(new google.maps.LatLng(30.196842, -81.394031));
 //    } else {
