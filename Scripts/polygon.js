@@ -86,7 +86,7 @@ function onDataFetched(response) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
-        polygons = extractLocations(response.rows);
+        polygons = extractPolygons(response.rows);
         setupMap(map);
     }
 }
