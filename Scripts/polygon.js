@@ -1,26 +1,6 @@
 ﻿// Adding 500 Data Points
 var map, polygons;
 var rounds, years, hole, shot, scores;
-var pars = [
-    4,
-    5,
-    3,
-    4,
-    4,
-    4,
-    4,
-    3,
-    5,
-    4,
-    5,
-    4,
-    3,
-    4,
-    4,
-    5,
-    3,
-    4
-];
 
 var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
 
@@ -104,14 +84,14 @@ function extractPolygons(rows) {
             ];
             var score = row[8];
             var color = colors[Math.floor(score)];
-            var opacity = score == 0 ? 0.0 : 1;
+            color = score == 0 ? "#000000" : color;
             polygons.push({
                 paths: polygonPoints,
                 strokeColor: "FF0000",
                 strokeOpacity: 0.0,
                 strokeWeight: 1,
                 fillColor: color,
-                fillOpacity: opacity
+                fillOpacity: 1.0 
             });
         }
     }
