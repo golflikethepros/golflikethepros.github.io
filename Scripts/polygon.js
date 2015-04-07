@@ -123,7 +123,7 @@ function onDataFetched(response) {
 function unsetOldPolygons() {
     for (var i = 0; i < polygons.length; i++) {
         polygons[i].setMap(null);
-        clearListeners(polygons[i], 'click');
+        google.maps.event.clearListeners(polygons[i], 'click');
     }
     polygons = [];
 }
