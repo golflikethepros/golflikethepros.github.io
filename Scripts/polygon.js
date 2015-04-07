@@ -78,13 +78,20 @@ function onDataFetched(response) {
     }
 }
 
+function unsetOldPolygons() {
+    for (var i = 0; i < polygons.length; i++) {
+        var polygon = new google.maps.Polygon(polygons[i]);
+        polygon.setMap(null);
+    }
+}
+
 var latSum = 0;
 var longSum = 0;
 var latCount = 0;
 var longCount = 0;
 
 function extractPolygons(rows) {
-    var polygons = [];
+    unsetOldPolygons();
     latSum = 0;
     longSum = 0;
     latCount = 0;
