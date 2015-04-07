@@ -1,10 +1,32 @@
 ﻿// Adding 500 Data Points
 var map, polygons = [];
 var hole = 0;
-
+var gradients = {
+    3: new Rainbow(),
+    4: new Rainbow(),
+    5: new Rainbow()
+};
+var pars = [
+    4,
+    5,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    5,
+    4,
+    5,
+    4,
+    3,
+    4,
+    4,
+    5,
+    3,
+    4
+];
 var colors = ["#0001E5", "#0071E0", "#00DBD9", "#00D669", "#02D200", "#69CD00", "#C35E00", "#BF0003"];
-
-var blueWhiteRed;
 
 var centers = [
     new google.maps.LatLng(30.202304, -81.395295),
@@ -31,9 +53,14 @@ function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
     promise.then(function () {
-        blueWhiteRed = new Rainbow();
-        blueWhiteRed.setSpectrum('blue', 'white', 'red');
-        blueWhiteRed.setNumberRange(0, 10);
+        
+        gradients[3].setSpectrum('blue', 'white', 'red');
+        gradients[3].setNumberRange(4, 10);
+        gradients[4].setSpectrum('blue', 'white', 'red');
+        gradients[4].setNumberRange(2, 10);
+        gradients[5].setSpectrum('blue', 'white', 'red');
+        gradients[5].setNumberRange(0, 10);
+
         initialize();
     });
 }
@@ -116,7 +143,7 @@ function extractPolygons(rows) {
             latCount += 4;
 
             var score = 10 - (10 / row[8]);
-            var color = "#" + blueWhiteRed.colourAt(score);
+            var color = "#" + gradients[par[hole]].colourAt(score);
             polygons.push(new google.maps.Polygon({
                     paths: polygonPoints,
                     strokeColor: "000000",
