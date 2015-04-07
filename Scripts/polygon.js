@@ -155,15 +155,15 @@ function extractPolygons(rows) {
             latMin = row[2] < latMin ? row[2] : latMin;
             latMin = row[4] < latMin ? row[4] : latMin;
             latMin = row[6] < latMin ? row[6] : latMin;
-            latMax = row[6] < latMax ? row[6] : latMax;
-            latMax = row[4] < latMax ? row[4] : latMax;
-            latMax = row[2] < latMax ? row[2] : latMax;
-            latMax = row[0] < latMax ? row[0] : latMax;
+            latMax = row[6] > latMax ? row[6] : latMax;
+            latMax = row[4] > latMax ? row[4] : latMax;
+            latMax = row[2] > latMax ? row[2] : latMax;
+            latMax = row[0] > latMax ? row[0] : latMax;
 
-            longMin = row[1] > longMin ? row[1] : longMin;
-            longMin = row[3] > longMin ? row[3] : longMin;
-            longMin = row[5] > longMin ? row[5] : longMin;
-            longMin = row[7] > longMin ? row[7] : longMin;
+            longMin = row[1] < longMin ? row[1] : longMin;
+            longMin = row[3] < longMin ? row[3] : longMin;
+            longMin = row[5] < longMin ? row[5] : longMin;
+            longMin = row[7] < longMin ? row[7] : longMin;
             longMax = row[7] > longMax ? row[7] : longMax;
             longMax = row[5] > longMax ? row[5] : longMax;
             longMax = row[3] > longMax ? row[3] : longMax;
