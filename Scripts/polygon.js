@@ -135,6 +135,9 @@ function extractPolygons(rows) {
 
             var score = 10 - (10 / row[8]);
             minAvg = score < minAvg ? score : minAvg;
+            if (score < 4) {
+                alert(score);
+            }
             maxAvg = score > maxAvg ? score : maxAvg;
 
             var polygon = new google.maps.Polygon({
