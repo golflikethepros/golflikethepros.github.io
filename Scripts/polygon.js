@@ -135,9 +135,6 @@ function extractPolygons(rows) {
 
             var score = 10 - (10 / row[8]);
             minAvg = score < minAvg ? score : minAvg;
-            if (score < 4) {
-                alert(score);
-            }
             maxAvg = score > maxAvg ? score : maxAvg;
 
             var polygon = new google.maps.Polygon({
@@ -148,15 +145,16 @@ function extractPolygons(rows) {
                 fillColor: "#000000",
                 fillOpacity: .5
             });
+
             polygon.set("score", score);
             polygons.push(polygon);
         }
     }
-    if (pars[hole] < maxAvg) {
-        abovePar.setNumberRange(pars[hole], maxAvg);
+    if ((10-pars[hole]) < maxAvg) {
+        abovePar.setNumberRange((10-pars[hole]), maxAvg);
     }
-    if (pars[hole] > minAvg) {
-        belowPar.setNumberRange(minAvg, pars[hole]);
+    if ((10-pars[hole]) > minAvg) {
+        belowPar.setNumberRange(minAvg, (10-pars[hole]));
     }
 }
 
