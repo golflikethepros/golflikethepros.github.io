@@ -57,7 +57,9 @@ function initialize() {
 var infoWindow;
 
 function showAverageScore(event) {
-    var contentString = "<b>Average Score:</b> " + (10-this.get("score")).toFixed(2);
+    var score = 10-this.get("score");
+    score = +score.toFixed(2);
+    var contentString = "<b>Average Score:</b> " + score;
     infoWindow.setContent(contentString);
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
