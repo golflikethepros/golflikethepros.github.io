@@ -139,7 +139,7 @@ function extractMarkers(rows) {
             marker.set("score", thisHoleScore);
             marker.set("year", year);
 
-            markers.add(marker);
+            markers.push(marker);
         }
     }
 }
