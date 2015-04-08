@@ -1,14 +1,35 @@
 ﻿// Adding 500 Data Points
 var map, polygons = [];
 var hole = 0;
-var gradient = new Rainbow();
-
+var abovePar = new Rainbow();
+var belowPar = new Rainbow();
+var pars = [
+    4,
+    5,
+    3,
+    4,
+    4,
+    4,
+    4,
+    3,
+    5,
+    4,
+    5,
+    4,
+    3,
+    4,
+    4,
+    5,
+    3,
+    4
+];
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
     promise.then(function () {
         
-        gradient.setSpectrum('blue', 'white', 'red');
+        abovePar.setSpectrum('white', 'red');
+        belowPar.setSpectrum('blue', 'white');
         initialize();
     });
 }
@@ -36,7 +57,7 @@ function initialize() {
 var infoWindow;
 
 function showAverageScore(event) {
-    var contentString = "<b>Average Score:</b> " + (10-this.get("score"));
+    var contentString = "<b>Average Score:</b> " + (10-this.get("score")).toFixed(2);
     infoWindow.setContent(contentString);
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
@@ -44,9 +65,15 @@ function showAverageScore(event) {
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
-        polygons[i].setOptions({
-            fillColor: "#" + gradient.colourAt(polygons[i].get("score"))
-        });
+        if (polygons[i].get("score") >= pars[hole]) {
+            polygons[i].setOptions({
+                fillColor: "#" + abovePar.colourAt(polygons[i].get("score"))
+            });
+        } else {
+            polygons[i].setOptions({
+                fillColor: "#" + belowPar.colourAt(polygons[i].get("score"))
+            });
+        }
         polygons[i].setMap(map);
         google.maps.event.addListener(polygons[i], 'click', showAverageScore);
     }
@@ -88,8 +115,8 @@ var bounds = new google.maps.LatLngBounds();
 function extractPolygons(rows) {
     unsetOldPolygons();
     bounds = new google.maps.LatLngBounds();
-    var minAvg = 5000;
     var maxAvg = -5000;
+    var minAvg = 5000;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -120,7 +147,8 @@ function extractPolygons(rows) {
             polygons.push(polygon);
         }
     }
-    gradient.setNumberRange(minAvg, maxAvg);
+    abovePar.setNumberRange(pars[hole], maxAvg);
+    belowPar.setNumberRange(minAvg, pars[hole]);
 }
 
 function buildQuery() {
