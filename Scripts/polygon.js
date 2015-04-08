@@ -66,7 +66,7 @@ function showAverageScore(event) {
 
 function setupMap() {
     for (var i = 0; i < polygons.length; i++) {
-        if (polygons[i].get("score") >= pars[hole]) {
+        if (polygons[i].get("score") >= (10-pars[hole])) {
             polygons[i].setOptions({
                 fillColor: "#" + abovePar.colourAt(polygons[i].get("score"))
             });
