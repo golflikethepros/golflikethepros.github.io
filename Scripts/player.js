@@ -117,10 +117,12 @@ var bounds = new google.maps.LatLngBounds();
 function extractMarkers(rows) {
     removeOldMarkers();
     bounds = new google.maps.LatLngBounds();
+
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
             var markerPoint = new google.maps.LatLng(row[0], row[1]);
+
             bounds.extend(markerPoint);
 
             var thisHoleScore = row[2];
@@ -131,11 +133,13 @@ function extractMarkers(rows) {
                 position: markerPoint,
                 title: playerFirst + " " + playerLast,
                 map: map,
-                icon: markers[playerNumber]
+                icon: markerUrls[playerNumber]
             });
             marker.set("name",playerFirst + " " + playerLast)
             marker.set("score", thisHoleScore);
             marker.set("year", year);
+
+            markers.add(marker);
         }
     }
 }
