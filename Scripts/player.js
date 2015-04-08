@@ -3,7 +3,7 @@ var map, markers = [];
 
 var year = 2006;
 var numberOfPlayers = 1;
-var playerNumbers = [];
+var playerNumbers = [8793];
 
 var markerUrls = [
     "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
@@ -147,7 +147,7 @@ function buildQuery() {
         query += playerNumbers[i] + ",";
     }
     query = query.substring(0, query.length - 1);
-    query += ")";
+    query += ") and col6 = " + year; 
     return query;
 };
 
