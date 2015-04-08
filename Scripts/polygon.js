@@ -149,8 +149,12 @@ function extractPolygons(rows) {
             polygons.push(polygon);
         }
     }
-    abovePar.setNumberRange(pars[hole], maxAvg);
-    belowPar.setNumberRange(minAvg, pars[hole]);
+    if (pars[hole] < maxAvg) {
+        abovePar.setNumberRange(pars[hole], maxAvg);
+    }
+    if (pars[hole] > minAvg) {
+        belowPar.setNumberRange(minAvg, pars[hole]);
+    }
 }
 
 function buildQuery() {
