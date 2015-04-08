@@ -1,9 +1,14 @@
 ﻿// Adding 500 Data Points
-var map, markers = [];
+var map;
 
-var year = 2006;
-var numberOfPlayers = 1;
-var playerNumbers = [8793];
+var currentPlayerInfo = [
+    {
+        "playerNumber": 8793,
+        "year": 2006,
+        "round": 1,
+        "markers": []
+    }
+];
 
 var markerUrls = [
     "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
@@ -39,7 +44,7 @@ var colors = new Rainbow();
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function () {
+    promise.then(function() {
         initialize();
     });
 }
@@ -66,58 +71,51 @@ function initialize() {
 }
 
 var infoWindow;
+
 function showMarkerInfo(event) {
     var contentString = "<b>Info:</b>" +
-                        "<br/><b>Player Name:</b>" + this.get("name") +
-                        "<br/><b>Hole Score:</b>" + this.get("score") +
-                        "<br/><b>Year:</b>" + this.get("year");
+        "<br/><b>Player Name:</b>" + this.get("name") +
+        "<br/><b>Hole Score:</b>" + this.get("score") +
+        "<br/><b>Year:</b>" + this.get("year");
 
     infoWindow.setContent(contentString);
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
 }
 
-function setupMap() {
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-        google.maps.event.addListener(markers[i], 'click', showMarkerInfo);
+function setupMap(newMarkers) {
+    for (var i = 0; i < newMarkers.length; i++) {
+        newMarkers[i].setMap(map);
+        google.maps.event.addListener(newMarkers[i], 'click', showMarkerInfo);
     }
-    if (markers.length > 0) {
-        map.setZoom(19);
+    if (newMarkers.length > 0) {
+        markers = markers.concat(newMarkers);
+        map.setZoom(16);
         map.panTo(bounds.getCenter());
     }
 };
 
 
-function onDataFetched(response) {
+function onDataFetched(response, i) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
-        extractMarkers(response.rows);
-        setupMap();
+        extractMarkers(response.rows, i);
+        setupMap(currentPlayerInfo[i]["markers"]);
     }
 }
 
-function removeOldMarkers() {
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-        google.maps.event.clearListeners(markers[i], 'click');
+function removeOldMarkers(markerList) {
+    for (var i = 0; i < markerList.length; i++) {
+        markerList[i].setMap(null);
+        google.maps.event.clearListeners(markerList[i], 'click');
     }
-    markers = [];
-}
-
-
-function findPlayerNumber(num) {
-    return playerNumbers.indexOf(num);
 }
 
 var bounds = new google.maps.LatLngBounds();
 
-function extractMarkers(rows) {
-    removeOldMarkers();
-    bounds = new google.maps.LatLngBounds();
-
+function extractMarkers(rows, spot) {
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -128,45 +126,63 @@ function extractMarkers(rows) {
             var thisHoleScore = row[2];
             var playerFirst = row[3];
             var playerLast = row[4];
-            var playerNumber = findPlayerNumber(row[5]);
             var marker = new google.maps.Marker({
                 position: markerPoint,
                 title: playerFirst + " " + playerLast,
                 map: map,
-                icon: markerUrls[playerNumber]
+                icon: markerUrls[spot]
             });
-            marker.set("name",playerFirst + " " + playerLast)
+            marker.set("name", playerFirst + " " + playerLast);
             marker.set("score", thisHoleScore);
-            marker.set("year", year);
-
-            markers.push(marker);
+            marker.set("year", currentPlayerInfo[spot]["year"]);
+            marker.set("round", currentPlayerInfo[spot]["round"]);
+            currentPlayerInfo[spot]["markers"].push(marker);
         }
     }
 }
 
-function buildQuery() {
-    var query = "select col0, col1, col2, col3, col4 from 1FMYNB5kuE8mRvGNZ-6_5TEVM3K0p6-TnwX2f1hW5";
-    query += " where col5 in (";
-    for (var i = 0; i < playerNumbers.length; i++) {
-        query += playerNumbers[i] + ",";
-    }
-    query = query.substring(0, query.length - 1);
-    query += ") and col6 = " + year; 
+function buildQuery(i) {
+    var query = "select col0, col1, col2, col3, col4 from 1l5d8IPUJiK0ONQVOUJn8c8XVs6nlYrEdJGtvytGt";
+    query += " where col5 = " + currentPlayerInfo[i]["playerNumber"];
+    query += " and col6 = " + currentPlayerInfo[i]["year"];
+    query += " and col7 = " + currentPlayerInfo[i]["round"];
+
     return query;
 };
 
+/*
+ * May end up calling this PER player added instead of for all players, probably makes more sense 
+ * because we will be making extra calls if not.
+ */
+var currentPlayerNumber = 0;
+
+function addNewData() {
+    var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(currentPlayerNumber) });
+    request.execute(function (response) {
+        onDataFetched(response, i);
+    });
+    currentPlayerNumber++;
+}
+
+function resetData() {
+    for (var i = 0; i < currentPlayerInfo.length; i++) {
+        removeOldMarkers(i);
+    }
+    currentPlayerNumber = 0;
+}
+
+function removePlayer(index) {
+    removeOldMarkers(index);
+}
+
 function setDataToUse() {
-        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
-        request.execute(function(response) {
-            onDataFetched(response);
+    bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < currentPlayerInfo.length; i++) {
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(i) });
+        request.execute(function (response) {
+            onDataFetched(response, i);
         });
+    }
 }
-
-function updateHoles(holeNum) {
-    hole = holeNum;
-    setDataToUse();
-    setupMap();
-}
-
 
 google.maps.event.addDomListener(window, 'load', loadApi);
