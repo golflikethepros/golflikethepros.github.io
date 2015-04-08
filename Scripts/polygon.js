@@ -26,8 +26,7 @@ var pars = [
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function () {
-        
+    promise.then(function () {        
         abovePar.setSpectrum('white', 'red');
         belowPar.setSpectrum('blue', 'white');
         initialize();
@@ -150,12 +149,8 @@ function extractPolygons(rows) {
             polygons.push(polygon);
         }
     }
-    if ((10-pars[hole]) < maxAvg) {
         abovePar.setNumberRange((10-pars[hole]), maxAvg);
-    }
-    if ((10-pars[hole]) > minAvg) {
         belowPar.setNumberRange(minAvg, (10-pars[hole]));
-    }
 }
 
 function buildQuery() {
