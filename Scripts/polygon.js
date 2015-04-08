@@ -57,7 +57,7 @@ function initialize() {
 var infoWindow;
 
 function showAverageScore(event) {
-    var score = 10-this.get("score");
+    var score = (10-this.get("score"));
     score = +score.toFixed(2);
     var contentString = "<b>Average Score:</b> " + score;
     infoWindow.setContent(contentString);
