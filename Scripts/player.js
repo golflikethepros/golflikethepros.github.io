@@ -75,7 +75,8 @@ function loadPlayer() {
         },
 
     ];
-    var randomSpot = Math.floor(Math.random() * 10); 
+    var randomSpot = Math.floor(Math.random() * 10);
+    
     currentPlayerInfo[0] = famousPlayers[randomSpot];
     initializePlayer();
 }
