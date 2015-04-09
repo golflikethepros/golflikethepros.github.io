@@ -82,7 +82,7 @@
 
   function drawHeatmap(locations) {
     var heatmap = new google.maps.visualization.HeatmapLayer({
-       dissipating: false,
+       dissipating: true,
        gradient: [
          'rgba(102,255,0,0)', 
          'rgba(147,255,0,1)', 
@@ -96,7 +96,7 @@
          'rgba(255,57,0,1)', 
          'rgba(255,0,0,1)'
        ],
-       opacity: 1,
+       opacity: .8,
        radius: 10,
        data: locations
     });
