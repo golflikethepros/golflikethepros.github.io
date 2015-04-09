@@ -82,6 +82,9 @@ function setupMap(map) {
     }
 };
 
+function clearHeatmap() {
+    heatmap.setupMap(null);
+}
 
 function onDataFetched(response) {
     if (response.error) {

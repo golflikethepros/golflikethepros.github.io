@@ -11,35 +11,12 @@ var markerUrls = [
     "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
 ];
 
-var centers = [
-    new google.maps.LatLng(30.202304, -81.395295),
-    new google.maps.LatLng(30.201720, -81.396194),
-    new google.maps.LatLng(30.199716, -81.397454),
-    new google.maps.LatLng(30.197231, -81.398200),
-    new google.maps.LatLng(30.195037, -81.396186),
-    new google.maps.LatLng(30.193380, -81.397668),
-    new google.maps.LatLng(30.192231, -81.397023),
-    new google.maps.LatLng(30.192359, -81.392582),
-    new google.maps.LatLng(30.195313, -81.394050),
-    new google.maps.LatLng(30.199874, -81.389663),
-    new google.maps.LatLng(30.199324, -81.389044),
-    new google.maps.LatLng(30.199078, -81.387457),
-    new google.maps.LatLng(30.200295, -81.386604),
-    new google.maps.LatLng(30.196990, -81.387453),
-    new google.maps.LatLng(30.196843, -81.390159),
-    new google.maps.LatLng(30.195806, -81.391035),
-    new google.maps.LatLng(30.194632, -81.390829),
-    new google.maps.LatLng(30.197012, -81.392888)
-];
-
-var colors = new Rainbow();
-
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
     promise.then(function () {
         getAllPlayerNames();
-        initialize();
+        initializePlayer();
     });
 }
 
@@ -57,9 +34,9 @@ function createMap() {
     return map;
 }
 
-function initialize() {
+function initializePlayer() {
     var map = createMap();
-    setDataToUse();
+    setPlayerDataToUse();
     setupMap(map);
     infoWindow = new google.maps.InfoWindow();
 }
@@ -154,20 +131,6 @@ function buildQuery(i) {
     return query;
 };
 
-/*
- * May end up calling this PER player added instead of for all players, probably makes more sense 
- * because we will be making extra calls if not.
- */
-var currentPlayerNumber = 0;
-
-function addNewData() {
-    var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(currentPlayerNumber) });
-    request.execute(function (response) {
-        onDataFetched(response);
-    });
-    currentPlayerNumber++;
-}
-
 function resetData() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         removeOldMarkers(currentPlayerInfo[i]["markers"]);
@@ -175,11 +138,8 @@ function resetData() {
     currentPlayerNumber = 0;
 }
 
-function removePlayer(index) {
-    removeOldMarkers(currentPlayerInfo[index]["markers"]);
-}
 
-function setDataToUse() {
+function setPlayerDataToUse() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(i) });
         request.execute(function (response) {
@@ -281,7 +241,7 @@ function doPlayerStuff() {
             "markers": []
         });
     }
-    setDataToUse();
+    setPlayerDataToUse();
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
