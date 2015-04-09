@@ -1,5 +1,4 @@
 ﻿// Adding 500 Data Points
-var map;
 
 var currentPlayerInfo = [];
 
@@ -16,24 +15,11 @@ function loadPlayer() {
     initializePlayer();
 }
 
-function createMap() {
-    var mapOptions = {
-        zoom: 16,
-        center: new google.maps.LatLng(30.196842, -81.394031),
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
-        mapTypeControl: false,
-        minZoom: 16,
-        streetViewControl: false
-    };
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-    return map;
-}
-
 function initializePlayer() {
-    var map = createMap();
     setPlayerDataToUse();
-    setupMap(map);
+    for (var i = 0; i < currentPlayerInfo; i++) {
+        setupMapPlayer(currentPlayerInfo[i]["markers"]);
+    }
     infoWindow = new google.maps.InfoWindow();
 }
 
@@ -51,7 +37,7 @@ function showMarkerInfo(event) {
     infoWindow.open(map);
 }
 
-function setupMap(newMarkers) {
+function setupMapPlayer(newMarkers) {
     for (var i = 0; i < newMarkers.length; i++) {
         newMarkers[i].setMap(map);
         google.maps.event.addListener(newMarkers[i], 'click', showMarkerInfo);
@@ -65,7 +51,7 @@ function onDataFetchedPlayer(response, i) {
             ' (' + response.error.code + ')');
     } else {
         var spot = extractMarkers(response.rows);
-        setupMap(currentPlayerInfo[spot]["markers"]);
+        setupMapPlayer(currentPlayerInfo[spot]["markers"]);
     }
 }
 
