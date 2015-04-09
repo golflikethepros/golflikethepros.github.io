@@ -7,6 +7,12 @@ var currentPlayerInfo = [
         "year": 2006,
         "round": 1,
         "markers": []
+    },
+    {
+        "playerNumber": 1810,
+        "year": 2006,
+        "round": 1,
+        "markers": []
     }
 ];
 
