@@ -213,6 +213,9 @@ function createInputs(rows) {
 function addYear(frmNum, rows) {
     var year = document.getElementById("year" + frmNum);
     year.innerHTML = "<option value=\"-1\">Select Year</option>";
+    if (!row.length) {
+        return;
+    }
     for (var a = 0; a < rows.length; a++) {
         var row = rows[a];
         if (row[0]) {
