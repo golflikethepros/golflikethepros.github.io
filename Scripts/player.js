@@ -220,6 +220,10 @@ function getAllData(response) {
 
 function createInputs(rows) {
     var select1 = document.getElementById("player1");
+    var select2 = document.getElementById("player2");
+    var select3 = document.getElementById("player3");
+    var select4 = document.getElementById("player4");
+    var select5 = document.getElementById("player5");
 
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
@@ -228,6 +232,10 @@ function createInputs(rows) {
             option.text = row[1] + ", " + row[0];
             option.value = row[2];
             select1.appendChild(option);
+            select2.appendChild(option);
+            select3.appendChild(option);
+            select4.appendChild(option);
+            select5.appendChild(option);
         }
     }
 }
