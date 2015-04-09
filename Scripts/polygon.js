@@ -55,7 +55,6 @@ function setupGridMap() {
 //    }
 };
 
-
 function onGridDataFetched(response) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +

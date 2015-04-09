@@ -47,13 +47,13 @@
 <h3>TPC Sawgrass</h3>
 <ul class="nav nav-tabs">
     <li role="presentation" class="active">
-        <a href="#Heatmap" aria-controls="Heatmap" role="tab" data-toggle="tab" onclick="resetPlayerData(); loadHeatmap();">Heatmap</a>
+        <a href="#Heatmap" aria-controls="Heatmap" role="tab" data-toggle="tab" onclick="unsetOldPolygons(); resetPlayerData(); loadHeatmap();">Heatmap</a>
     </li>
     <li role="presentation">
         <a href="#shotgrid" aria-controls="shotgrid" role="tab" data-toggle="tab" onclick="resetPlayerData(); clearHeatmap(); loadShotGrid();">Shot Grid</a>
     </li>
     <li role="presentation">
-        <a href="#player" aria-controls="player" role="tab" data-toggle="tab" onclick="clearHeatmap(); loadPlayer();">Player Comparison</a>
+        <a href="#player" aria-controls="player" role="tab" data-toggle="tab" onclick="unsetOldPolygons(); clearHeatmap(); loadPlayer();">Player Comparison</a>
     </li>
 </ul>
 <div class="tab-content">
