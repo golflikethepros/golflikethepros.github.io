@@ -37,6 +37,12 @@ function showMarkerInfo(event) {
     infoWindow.open(map);
 }
 
+function removeAllPlayerMarkers() {
+    for (var i = 0; i < currentPlayerInfo.length; i++) {
+        
+    }
+}
+
 function setupMapPlayer(newMarkers) {
     for (var i = 0; i < newMarkers.length; i++) {
         newMarkers[i].setMap(map);
@@ -113,11 +119,10 @@ function buildPlayerQuery(i) {
     return query;
 };
 
-function resetData() {
+function resetPlayerData() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         removeOldMarkers(currentPlayerInfo[i]["markers"]);
     }
-    currentPlayerNumber = 0;
 }
 
 
@@ -207,7 +212,7 @@ function getAllPlayerNames() {
 }
 
 function doPlayerStuff() {
-    resetData();
+    resetPlayerData();
     currentPlayerInfo = [];
     for (var i = 1; i < 6; i++) {
         var player = parseInt(document.getElementById("player" + i).value);

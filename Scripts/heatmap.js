@@ -71,6 +71,12 @@ function initialize() {
     setupMap(map);
 }
 
+function loadHeatmap() {
+    setDataToUse();
+    setCurrentScores(0);
+    setupMap(map);
+}
+
 function setupMap(map) {
     if (dataToUse.length > 0) {
         heatmap = new google.maps.visualization.HeatmapLayer({
