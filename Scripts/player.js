@@ -50,7 +50,8 @@ var colors = new Rainbow();
 function loadApi() {
     gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
     var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function() {
+    promise.then(function () {
+        getAllPlayerNames();
         initialize();
     });
 }
