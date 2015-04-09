@@ -283,22 +283,22 @@ function getAllPlayerNames() {
 }
 
 function doPlayerStuff() {
-    var player1 = document.getElementById("player1").value;
-    var year1 = document.getElementById("year1").value;
-    var rnd1 = document.getElementById("rd1").value;
-    var player2 = document.getElementById("player2").value;
-    var year2 = document.getElementById("year2").value;
-    var rnd2 = document.getElementById("rd2").value;
-    var player3 = document.getElementById("player3").value;
-    var year3 = document.getElementById("year3").value;
-    var rnd3 = document.getElementById("rd3").value;
-    var player4 = document.getElementById("player4").value;
-    var year4 = document.getElementById("year4").value;
-    var rnd4 = document.getElementById("rd4").value;
-    var player5 = document.getElementById("player5").value;
-    var year5 = document.getElementById("year5").value;
-    var rnd5 = document.getElementById("rd5").value;
-    return "yay";
+    currentPlayerInfo = [];
+    for (var i = 1; i < 6; i++) {
+        var player = parseInt(document.getElementById("player" + i).value);
+        var year = parseInt(document.getElementById("year" + i).value);
+        var round = parseInt(document.getElementById("rd" + i).value);
+        if (player === -1 || year === -1 || round === -1) {
+            continue;
+        }
+        currentPlayerInfo.push({
+            "playerNumber": player,
+            "year": year,
+            "round": round,
+            "markers": []
+        });
+    }
+    setDataToUse();
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
