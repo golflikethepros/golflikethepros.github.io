@@ -12,6 +12,14 @@ var markerUrls = [
 
 function loadPlayer() {
     getAllPlayerNames();
+    currentPlayerInfo = [
+        {
+            "playerNumber": 1810,
+            "year": 2006,
+            "round": 1,
+            "markers": []
+        }
+    ];
     initializePlayer();
 }
 
