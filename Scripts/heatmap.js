@@ -101,7 +101,7 @@ function extractLocations(rows) {
         if (row[0]) {
             var lat = row[0];
             var lng = row[1];
-            if (lat && lng && !isNaN(lat) && !isNaN(lng)) {
+            if (lat && lng && !isNaN(lat) && !isNaN(lng) && lat < 30.205038 && lng < -81.383628) {
                 var latLng = new google.maps.LatLng(lat, lng);
                 bounds.extend(latLng);
                 locations.push(latLng);
