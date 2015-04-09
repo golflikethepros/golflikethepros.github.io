@@ -249,7 +249,7 @@ function addYear(frmNum, rows) {
 function updateYear(frmNum, playerNum) {
     var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col6 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v where col5 = "+ playerNum + " group by col6" });
     request.execute(function (response) {
-        addYearRounds(frmNum, response.rows);
+        addYear(frmNum, response.rows);
     });
 }
 
