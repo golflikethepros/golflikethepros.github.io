@@ -49,7 +49,7 @@ function createMap() {
 }
 
 function removeCurrentData() {
-    var currentDataDiv = document.getElementById("current-data");
+    var currentDataDiv = document.getElementById("current-data-shell");
     currentDataDiv.innerHTML = "";
 }
 
@@ -155,6 +155,7 @@ function setDataToUse() {
 }
 
 function setCurrentDataHtml() {
+
     var innerHtml = "<h4>Current Data:</h4>Year(s):";
     for (var l = 0; l < years.length; l++) {
         innerHtml += " " + (years[l] + 2006) + ",";
@@ -177,7 +178,7 @@ function setCurrentDataHtml() {
     innerHtml = innerHtml.substring(0, innerHtml.length - 1);
 
     innerHtml += "<br/>Data Points: " + dataToUse.length;
-    document.getElementById("current-data").innerHTML = innerHtml;
+    document.getElementById("current-data-shell").innerHTML = "<div id=\"current-data\">" + innerHtml + "</div>";
 }
 
 function updateRound(frm, reset) {
