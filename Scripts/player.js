@@ -59,7 +59,7 @@ function setupMap(newMarkers) {
 };
 
 
-function onDataFetched(response, i) {
+function onDataFetchedPlayer(response, i) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
@@ -139,7 +139,7 @@ function setPlayerDataToUse() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildPlayerQuery(i) });
         request.execute(function (response) {
-            onDataFetched(response);
+            onDataFetchedPlayer(response);
         });
     }
 }
