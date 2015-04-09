@@ -95,7 +95,6 @@ function setupMap(newMarkers) {
         google.maps.event.addListener(newMarkers[i], 'click', showMarkerInfo);
     }
     if (newMarkers.length > 0) {
-        markers = markers.concat(newMarkers);
         map.setZoom(16);
         map.panTo(bounds.getCenter());
     }
@@ -135,7 +134,7 @@ function findSpot(num, yr, rnd) {
 }
 
 function extractMarkers(rows) {
-    var spot = 0;
+    var spot = -1;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -146,7 +145,9 @@ function extractMarkers(rows) {
             var thisHoleScore = row[2];
             var playerFirst = row[3];
             var playerLast = row[4];
-            spot = findSpot(row[5], row[6], row[7]);
+            if (spot === -1) {
+                spot = findSpot(row[5], row[6], row[7]);
+            }
             var marker = new google.maps.Marker({
                 position: markerPoint,
                 title: playerFirst + " " + playerLast,
