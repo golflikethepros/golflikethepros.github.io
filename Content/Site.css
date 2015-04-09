@@ -5,6 +5,10 @@
     background-color: black;
 }
 
+.visible-colors {
+    color: black;
+}
+
 #map-canvas {
     height: 100%;
     margin-top: 44px;

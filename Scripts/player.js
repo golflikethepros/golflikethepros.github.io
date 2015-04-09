@@ -225,7 +225,7 @@ function createInputs(rows) {
         var row = rows[i];
         if (row[0]) {
             var option = document.createElement("option");
-            option.text = row[0] + " " + row[1];
+            option.text = row[1] + ", " + row[0];
             option.value = row[2];
             select1.appendChild(option);
         }
@@ -233,7 +233,7 @@ function createInputs(rows) {
 }
 
 function getAllPlayerNames() {
-    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col3, col4, col5 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v group by col3, col4, col5" });
+    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col3, col4, col5 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v group by col3, col4, col5 order by col4" });
     request.execute(function (response) {
         getAllData(response);
     });
