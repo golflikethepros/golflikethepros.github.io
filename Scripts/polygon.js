@@ -74,8 +74,6 @@ function unsetOldPolygons() {
     polygons = [];
 }
 
-var bounds = new google.maps.LatLngBounds();
-
 
 function extractPolygons(rows) {
     unsetOldPolygons();
