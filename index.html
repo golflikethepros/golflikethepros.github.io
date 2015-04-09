@@ -2,10 +2,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="icon" type="image/ico" href="Content/ball.ico" />
+    <link rel="icon" type="image/ico" href="Content/ball.ico"/>
     <title>TPC Sawgrass Shot Data</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=ftOnLoadClientApi">
+    
     </script>
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/jquery.cookie.js"></script>
@@ -19,31 +20,38 @@
     <link type="text/css" rel="stylesheet" href="Content/Site.css"/>
 </head>
 <body>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Golf Like the Pros</h4>
-                </div>
-                <div class="modal-body">
-                    This website is dedicated to helping Golfers and statisticans get direct access to golf data. The site currently only allows analysis of TPC Sawgrass, but that will be improved upon in coming interations. 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="doNotShow()" data-dismiss="modal">Close & Do not show this message again</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Golf Like the Pros</h4>
+            </div>
+            <div class="modal-body">
+                This website is dedicated to helping Golfers and statisticans get direct access to golf data. The site currently only allows analysis of TPC Sawgrass, but that will be improved upon in coming interations.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick=" doNotShow() " data-dismiss="modal">Close & Do not show this message again</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 <div class="snap-drawers blue-bg">
 <div class="not-all-the-way2 snap-content snap-drawer-left ">
 <div class="not-all-the-way">
 <h3>TPC Sawgrass</h3>
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#heatmap" aria-controls="Heatmap" role="tab" data-toggle="tab">Heatmap</a></li>
-    <li role="presentation"><a href="#shotgrid" aria-controls="shotgrid" role="tab" data-toggle="tab">Shot Grid</a></li>
-    <li role="presentation"><a href="#player" aria-controls="player" role="tab" data-toggle="tab">Player Comparison</a></li>
+    <li role="presentation" class="active">
+        <a href="#Heatmap" aria-controls="Heatmap" role="tab" data-toggle="tab">Heatmap</a>
+    </li>
+    <li role="presentation">
+        <a href="#shotgrid" aria-controls="shotgrid" role="tab" data-toggle="tab">Shot Grid</a>
+    </li>
+    <li role="presentation">
+        <a href="#player" aria-controls="player" role="tab" data-toggle="tab">Player Comparison</a>
+    </li>
 </ul>
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="Heatmap">
@@ -59,15 +67,24 @@
     <div id="collapseOne" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
             <form name="years" id="years">
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) " checked>2006 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2007 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2008 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2009 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2010 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2011 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2012 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2013 </span> </label><br/>
-                <label><span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2014 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) " checked>2006 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2007 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2008 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2009 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2010 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2011 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2012 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2013 </span> </label><br/>
+                <label>
+                    <span><input type="Checkbox" name="Year" value="2006" onclick=" updateYears(this.form) ">2014 </span> </label><br/>
                 <a class="btn btn-default btn-margin" onclick=" selectAllYears() ">Select/Deselect All</a>
             </form>
         </div>
@@ -84,7 +101,8 @@
     <div id="collapseTwo" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
             <form name="rounds" id="rounds">
-                <label><span><input type="Checkbox" name="Round" value="Round1" onclick=" updateRound(this.form) " checked>Round 1 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Round" value="Round1" onclick=" updateRound(this.form) " checked>Round 1 </span></label> <br/>
                 <label>
                     <span><input type="Checkbox" name="Round" value="Round2" onclick=" updateRound(this.form) ">Round 2 </span>
                 </label> <br/>
@@ -240,20 +258,34 @@
     <div id="collapseSix" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingSix">
         <div class="panel-body">
             <form id="scores" name="scores">
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">1 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">2 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">3 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">4 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">5 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">6 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">7 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">8 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">9 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">10 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">11 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">12 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">13 </span></label> <br/>
-                <label><span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">14 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">1 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">2 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">3 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">4 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">5 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">6 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">7 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">8 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">9 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">10 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">11 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">12 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">13 </span></label> <br/>
+                <label>
+                    <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">14 </span></label> <br/>
                 <span><input type="Checkbox" name="Score" value="2006" onclick=" updateScores(this.form) ">15 </span> <br/>
                 <a class="btn btn-default btn-margin" onclick=" selectAllScores() ">Select/Deselect All</a>
             </form>
