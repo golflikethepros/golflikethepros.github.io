@@ -142,7 +142,7 @@ function extractMarkers(rows, spot) {
 }
 
 function buildQuery(i) {
-    var query = "select col0, col1, col2, col3, col4 from 1l5d8IPUJiK0ONQVOUJn8c8XVs6nlYrEdJGtvytGt";
+    var query = "select col0, col1, col2, col3, col4 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v";
     query += " where col5 = " + currentPlayerInfo[i]["playerNumber"];
     query += " and col6 = " + currentPlayerInfo[i]["year"];
     query += " and col7 = " + currentPlayerInfo[i]["round"];
