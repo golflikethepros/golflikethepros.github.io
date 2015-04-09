@@ -219,19 +219,15 @@ function getAllData(response) {
 }
 
 function createInputs(rows) {
-    var options = []
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
-            var option = document.createElement("option");
-            option.text = row[1] + ", " + row[0];
-            option.value = row[2];
-            options.push(option);
-        }
-    }
-    for (var j = 1; j < 6; j++) {
-        for (var k = 0; k < options.length; k++) {
-            document.getElementById("player"+j).appendChild(options[k]);
+            for (var j = 1; j < 6; j++) {
+                var option = document.createElement("option");
+                option.text = row[1] + ", " + row[0];
+                option.value = row[2];
+                document.getElementById("player" + j).appendChild(option);
+            }
         }
     }
 }
