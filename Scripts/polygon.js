@@ -82,6 +82,9 @@ function extractPolygons(rows) {
     bounds = new google.maps.LatLngBounds();
     var maxAvg = -5000;
     var minAvg = 5000;
+    if (!rows) {
+        return;
+    }
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {

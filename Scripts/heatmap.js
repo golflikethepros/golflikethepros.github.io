@@ -105,6 +105,9 @@ function onDataFetched(response) {
 
 function extractLocations(rows) {
     var locations = [];
+    if (!rows) {
+        return [];
+    }
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
