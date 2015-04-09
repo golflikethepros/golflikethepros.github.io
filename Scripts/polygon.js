@@ -23,37 +23,21 @@ var pars = [
     3,
     4
 ];
-function loadApi() {
-    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-    var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function () {        
-        abovePar.setSpectrum('white', 'red');
-        belowPar.setSpectrum('blue', 'white');
-        initialize();
-    });
+
+function loadShotGrid() {
+    abovePar.setSpectrum('white', 'red');
+    belowPar.setSpectrum('blue', 'white');
+    initializeGrid();
 }
 
-function createMap() {
-    var mapOptions = {
-        zoom: 16,
-        center: new google.maps.LatLng(30.196842, -81.394031),
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
-        mapTypeControl: false,
-        minZoom: 16,
-        streetViewControl: false
-    };
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-    return map;
-}
+var infoWindow;
 
-function initialize() {
-    var map = createMap();
-    setDataToUse();
-    setupMap(map);
+function initializeGrid() {
+    setGridDataToUse();
+    setupGridMap(map);
     infoWindow = new google.maps.InfoWindow();
 }
-var infoWindow;
+
 
 function showAverageScore(event) {
     var score = (10-this.get("score"));
@@ -64,7 +48,7 @@ function showAverageScore(event) {
     infoWindow.open(map);
 }
 
-function setupMap() {
+function setupGridMap() {
     for (var i = 0; i < polygons.length; i++) {
         if (polygons[i].get("score") >= (10-pars[hole])) {
             polygons[i].setOptions({
@@ -92,13 +76,13 @@ function setupMap() {
 };
 
 
-function onDataFetched(response) {
+function onGridDataFetched(response) {
     if (response.error) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
         extractPolygons(response.rows);
-        setupMap();
+        setupGridMap();
     }
 }
 
@@ -159,18 +143,17 @@ function buildQuery() {
     return query;
 };
 
-function setDataToUse() {
+function setGridDataToUse() {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
         request.execute(function(response) {
-            onDataFetched(response);
+            onGridDataFetched(response);
         });
 }
 
-function updateHoles(holeNum) {
+function updateShotGridHoles(holeNum) {
     hole = holeNum;
-    setDataToUse();
-    setupMap();
+    setGridDataToUse();
+    setupGridMap();
 }
-
 
 google.maps.event.addDomListener(window, 'load', loadApi);
