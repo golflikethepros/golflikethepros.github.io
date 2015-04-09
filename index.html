@@ -309,10 +309,112 @@
 </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="shotgrid">
-    shot grid settings
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default panel-body-style">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Select Hole
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <form role="form" id="holes">
+                        <div class="radio">
+                            <label><input type="radio" name="holes" onclick=" updateHoles(0) " id="hole1" checked />Hole 1</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(1) " id="hole2" />Hole 2</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(2) " id="hole3" />Hole 3</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(3) " id="hole4" />Hole 4</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(4) " id="hole5" />Hole 5</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(5) " id="hole6" />Hole 6</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(6) " id="hole7" />Hole 7</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(7) " id="hole8" />Hole 8</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(8) " id="hole9" />Hole 9</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(9) " id="hole10" />Hole 10</label> <br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(10) " id="hole11" />Hole 11</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(11) " id="hole12" />Hole 12</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(12) " id="hole13" />Hole 13</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(13) " id="hole14" />Hole 14</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(14) " id="hole15" />Hole 15</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(15) " id="hole16" />Hole 16</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(16) " id="hole17" />Hole 17</label><br />
+                            <label><input type="radio" name="holes" onclick=" updateHoles(17) " id="hole18" />Hole 18</label><br />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default panel-body-style">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        Other Options
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    <a class="btn btn-default" onclick=" closeSettings() ">Close Settings Window</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div role="tabpanel" class="tab-pane" id="player">
-    player comparison settings
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default panel-body-style">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Choose Players
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <form class="visible-colors">
+                        <select id="player1" onchange=" updateYear(1, this.value) "><option value="-1">Select Player</option></select>
+                        <select id="year1" onchange=" updateRound(1, this.value) "><option value="-1">Select Year</option></select>
+                        <select id="rd1"><option value="-1">Select Round</option></select>
+                        <br />
+                        <select id="player2" onchange="updateYear(2, this.value)"><option value="-1">Select Player</option></select>
+                        <select id="year2" onchange="updateRound(2, this.value)"><option value="-1">Select Year</option></select>
+                        <select id="rd2"><option value="-1">Select Round</option></select>
+                        <br />
+                        <select id="player3" onchange="updateYear(3, this.value)"><option value="-1">Select Player</option></select>
+                        <select id="year3" onchange="updateRound(3, this.value)"><option value="-1">Select Year</option></select>
+                        <select id="rd3"><option value="-1">Select Round</option></select>
+                        <br />
+                        <select id="player4" onchange="updateYear(4, this.value)"><option value="-1">Select Player</option></select>
+                        <select id="year4" onchange="updateRound(4, this.value)"><option value="-1">Select Year</option></select>
+                        <select id="rd4"><option value="-1">Select Round</option></select>
+                        <br />
+                        <select id="player5" onchange="updateYear(5, this.value)"><option value="-1">Select Player</option></select>
+                        <select id="year5" onchange="updateRound(5, this.value)"><option value="-1">Select Year</option></select>
+                        <select id="rd5"><option value="-1">Select Round</option></select>
+                        <br />
+                        <br />
+                        <a class="btn btn-default" onclick="doPlayerStuff()">Go</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default panel-body-style">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        Other Options
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                    <a class="btn btn-default" onclick=" closeSettings() ">Close Settings Window</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 
