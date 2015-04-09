@@ -118,7 +118,7 @@ function extractMarkers(rows) {
     return spot;
 }
 
-function buildQuery(i) {
+function buildPlayerQuery(i) {
     var query = "select col0, col1, col2, col3, col4, col5, col6, col7 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v";
     query += " where col5 = " + currentPlayerInfo[i]["playerNumber"];
     query += " and col6 = " + currentPlayerInfo[i]["year"];
@@ -137,7 +137,7 @@ function resetData() {
 
 function setPlayerDataToUse() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
-        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(i) });
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildPlayerQuery(i) });
         request.execute(function (response) {
             onDataFetched(response);
         });
