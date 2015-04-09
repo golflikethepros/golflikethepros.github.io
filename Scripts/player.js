@@ -231,11 +231,11 @@ function createInputs(rows) {
             var option = document.createElement("option");
             option.text = row[1] + ", " + row[0];
             option.value = row[2];
-            select1.appendChild(option);
-            select2.appendChild(option);
-            select3.appendChild(option);
-            select4.appendChild(option);
-            select5.appendChild(option);
+            select1.innerHtml += option.outerHtml;
+            select2.innerHtml += option.outerHtml;
+            select3.innerHtml += option.outerHtml;
+            select4.innerHtml += option.outerHtml;
+            select5.innerHtml += option.outerHtml;
         }
     }
 }
