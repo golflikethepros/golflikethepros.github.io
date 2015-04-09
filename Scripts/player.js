@@ -11,13 +11,9 @@ var markerUrls = [
     "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
 ];
 
-function loadApi() {
-    gapi.client.setApiKey('AIzaSyCdYpl52Jry_L7mZR8ryuLn2kvGdzGzZIM');
-    var promise = gapi.client.load('fusiontables', 'v1');
-    promise.then(function () {
-        getAllPlayerNames();
-        initializePlayer();
-    });
+function loadPlayer() {
+    getAllPlayerNames();
+    initializePlayer();
 }
 
 function createMap() {
@@ -243,5 +239,3 @@ function doPlayerStuff() {
     }
     setPlayerDataToUse();
 }
-
-google.maps.event.addDomListener(window, 'load', loadApi);
