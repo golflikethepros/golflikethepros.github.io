@@ -115,7 +115,20 @@ function removeOldMarkers(markerList) {
 
 var bounds = new google.maps.LatLngBounds();
 
-function extractMarkers(rows, spot) {
+function findSpot(num, yr, rnd) {
+    for (var i = 0; i < currentPlayerInfo.length; i++) {
+        if (currentPlayerInfo[i]["playerNumber"] === num) {
+            if (currentPlayerInfo[i]["year"] === yr) {
+                if (currentPlayerInfo[i]["round"] === rnd) {
+                    return i;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+function extractMarkers(rows) {
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -126,6 +139,7 @@ function extractMarkers(rows, spot) {
             var thisHoleScore = row[2];
             var playerFirst = row[3];
             var playerLast = row[4];
+            var spot = findSpot(row[5], row[6], row[7]);
             var marker = new google.maps.Marker({
                 position: markerPoint,
                 title: playerFirst + " " + playerLast,
@@ -180,7 +194,7 @@ function setDataToUse() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(i) });
         request.execute(function (response) {
-            onDataFetched(response, i);
+            onDataFetched(response);
         });
     }
 }
