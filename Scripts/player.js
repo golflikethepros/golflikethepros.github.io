@@ -239,4 +239,11 @@ function getAllPlayerNames() {
     });
 }
 
+function doPlayerStuff() {
+    var player1 = document.getElementById("player1").value;
+    var year1 = document.getElementById("year1").value;
+    var rnd1 = document.getElementById("rd1").value;
+    return "yay";
+}
+
 google.maps.event.addDomListener(window, 'load', loadApi);

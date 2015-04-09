@@ -57,9 +57,11 @@
                     <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                             <form class="visible-colors">
-                                <select id="player1">
+                                <select id="player1" tex>
+                                    <option value="-1">Select Player</option>
                                 </select>
                                 <select id="year1">
+                                    <option value="-1">Select Year</option>
                                     <option value="2006">2006</option>
                                     <option value="2007">2007</option>
                                     <option value="2008">2008</option>
@@ -71,11 +73,13 @@
                                     <option value="2014">2014</option>
                                 </select>
                                 <select id="rd1">
+                                    <option value="-1">Select Round</option>
                                     <option value="1">Round 1</option>
                                     <option value="2">Round 2</option>
                                     <option value="3">Round 3</option>
                                     <option value="4">Round 4</option>
                                 </select>
+                                <button class="btn-default" onclick="doPlayerStuff()">Submit</button>
                             </form>
                         </div>
                     </div>
