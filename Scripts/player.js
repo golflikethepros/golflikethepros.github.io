@@ -170,13 +170,13 @@ function addNewData() {
 
 function resetData() {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
-        removeOldMarkers(i);
+        removeOldMarkers(currentPlayerInfo[i]["markers"]);
     }
     currentPlayerNumber = 0;
 }
 
 function removePlayer(index) {
-    removeOldMarkers(index);
+    removeOldMarkers(currentPlayerInfo[index]["markers"]);
 }
 
 function setDataToUse() {
