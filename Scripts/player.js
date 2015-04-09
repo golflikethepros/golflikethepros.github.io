@@ -70,7 +70,8 @@ function showMarkerInfo(event) {
     var contentString = "<b>Info:</b>" +
         "<br/><b>Player Name:</b>" + this.get("name") +
         "<br/><b>Hole Score:</b>" + this.get("score") +
-        "<br/><b>Year:</b>" + this.get("year");
+        "<br/><b>Year:</b>" + this.get("year") + 
+        "<br/><b>Round:</b>" + this.get("round");
 
     infoWindow.setContent(contentString);
     infoWindow.setPosition(event.latLng);
@@ -264,6 +265,7 @@ function getAllPlayerNames() {
 }
 
 function doPlayerStuff() {
+    resetData();
     currentPlayerInfo = [];
     for (var i = 1; i < 6; i++) {
         var player = parseInt(document.getElementById("player" + i).value);
