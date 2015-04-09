@@ -253,6 +253,28 @@ function updateYear(frmNum, playerNum) {
     });
 }
 
+function addRound(frmNum, rows) {
+    var round = document.getElementById("year" + frmNum);
+    round.innerHTML = "<option value=\"-1\">Select Round</option>";
+    for (var a = 0; a < rows.length; a++) {
+        var row = rows[a];
+        if (row[0]) {
+            var roundOpt = document.createElement("option");
+            roundOpt.text = "Round " + row[0];
+            roundOpt.value = row[0];
+            year.appendChild(roundOpt);
+        }
+    }
+}
+
+function updateRound(frmNum, year) {
+    var playerNum = document.getElementById("player" + frmNum).value;
+    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col7 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v where col5 = " + playerNum + " and col6 = " + year + " group by col7" });
+    request.execute(function (response) {
+        addRound(frmNum, response.rows);
+    });
+}
+
 function getAllPlayerNames() {
     var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col3, col4, col5 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v group by col3, col4, col5 order by col4" });
     request.execute(function (response) {
