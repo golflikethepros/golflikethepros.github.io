@@ -83,7 +83,7 @@ function setupMap(map) {
 };
 
 function clearHeatmap() {
-    heatmap.setupMap(null);
+    heatmap.setMap(null);
 }
 
 function onDataFetched(response) {
