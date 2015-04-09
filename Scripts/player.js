@@ -81,7 +81,9 @@ function loadPlayer() {
     initializePlayer();
 }
 function hideInfoWindow() {
-    infoWindow.close();
+    if (infoWindow) {
+        infoWindow.close();
+    }
 }
 function initializePlayer() {
     setPlayerDataToUse();
