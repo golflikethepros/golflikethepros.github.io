@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ball.ico" />
+    <Content Include="funk.html" />
     <Content Include="player.html" />
     <Content Include="polygon.html" />
     <Content Include="Scripts\bootbox.min.js" />
