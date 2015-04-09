@@ -70,7 +70,7 @@ function setupMap(map) {
             maxIntensity: 2
         });
         heatmap.setMap(map);
-        map.setZoom(18);
+        map.setZoom(19);
         map.panTo(bounds.getCenter());
     }
 };
@@ -329,11 +329,10 @@ function updateHoles(value) {
     hole = value;
     shot = 0;
     setCurrentScores(value);
-    setDataToUse();
     if (heatmap) {
-        heatmap.setupMap(null)
+        heatmap.setMap(null);
     }
-
+    setDataToUse();
     storeCookie("hole", [hole]);
 }
 
