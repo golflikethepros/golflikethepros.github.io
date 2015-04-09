@@ -1,20 +1,7 @@
 ﻿// Adding 500 Data Points
 var map;
 
-var currentPlayerInfo = [
-    {
-        "playerNumber": 8793,
-        "year": 2006,
-        "round": 1,
-        "markers": []
-    },
-    {
-        "playerNumber": 1810,
-        "year": 2006,
-        "round": 1,
-        "markers": []
-    }
-];
+var currentPlayerInfo = [];
 
 var markerUrls = [
     "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
