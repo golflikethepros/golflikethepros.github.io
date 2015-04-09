@@ -82,10 +82,6 @@ function setupMap(newMarkers) {
         newMarkers[i].setMap(map);
         google.maps.event.addListener(newMarkers[i], 'click', showMarkerInfo);
     }
-    if (newMarkers.length > 0) {
-        map.setZoom(16);
-        map.panTo(bounds.getCenter());
-    }
 };
 
 
@@ -106,8 +102,6 @@ function removeOldMarkers(markerList) {
     }
 }
 
-var bounds = new google.maps.LatLngBounds();
-
 function findSpot(num, yr, rnd) {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         if (currentPlayerInfo[i]["playerNumber"] == num) {
@@ -127,8 +121,6 @@ function extractMarkers(rows) {
         var row = rows[i];
         if (row[0]) {
             var markerPoint = new google.maps.LatLng(row[0], row[1]);
-
-            bounds.extend(markerPoint);
 
             var thisHoleScore = row[2];
             var playerFirst = row[3];
@@ -187,7 +179,6 @@ function removePlayer(index) {
 }
 
 function setDataToUse() {
-    bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < currentPlayerInfo.length; i++) {
         var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(i) });
         request.execute(function (response) {
