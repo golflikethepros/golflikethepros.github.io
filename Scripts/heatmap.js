@@ -255,9 +255,6 @@ function updateRound(frm, reset) {
         }
     }
     setDataToUse();
-    if (heatmap) {
-        heatmap.set("data", dataToUse);
-    }
     storeCookie("rounds", rounds);
 }
 
@@ -323,9 +320,6 @@ function updateScores(frm, reset) {
         }
     }
     setDataToUse();
-    if (heatmap) {
-        heatmap.set("data", dataToUse);
-    }
     storeCookie("scores", scores);
 }
 
@@ -350,7 +344,7 @@ function updateHoles(value) {
     setCurrentScores(value);
     setDataToUse();
     if (heatmap) {
-        heatmap.set("data", dataToUse);
+        heatmap.setupMap(null)
     }
 
     storeCookie("hole", [hole]);
@@ -364,19 +358,12 @@ function updateYears(frm) {
         }
     }
     setDataToUse();
-    if (heatmap) {
-        heatmap.set("data", dataToUse);
-    }
     storeCookie("years", years);
 }
 
 function updateShots(value) {
     shot = value;
     setDataToUse();
-    if (heatmap) {
-        heatmap.set("data", dataToUse);
-    }
-
     storeCookie("shot", [shot]);
 }
 
