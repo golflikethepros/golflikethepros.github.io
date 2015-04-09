@@ -57,18 +57,28 @@
                     <div id="collapseThree" class="panel-body-style collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                             <form class="visible-colors">
-                                <select id="player1" onchange="updateYear(1, this.value)">
-                                    <option value="-1">Select Player</option>
-                                </select>
-                                <select id="year1" onchange="updateRound(1, this.value)">
-                                    <option value="-1">Select Year</option>
-                                </select>
-                                <select id="rd1">
-                                    <option value="-1">Select Round</option>
-                                </select>
+                                <select id="player1" onchange=" updateYear(1, this.value) "><option value="-1">Select Player</option></select>
+                                <select id="year1" onchange=" updateRound(1, this.value) "><option value="-1">Select Year</option></select>
+                                <select id="rd1"><option value="-1">Select Round</option></select>
+                                <br/>
+                                <select id="player2" onchange="updateYear(2, this.value)"><option value="-1">Select Player</option></select>
+                                <select id="year2" onchange="updateRound(2, this.value)"><option value="-1">Select Year</option></select>
+                                <select id="rd2"><option value="-1">Select Round</option></select>
+                                <br />
+                                <select id="player3" onchange="updateYear(3, this.value)"><option value="-1">Select Player</option></select>
+                                <select id="year3" onchange="updateRound(3, this.value)"><option value="-1">Select Year</option></select>
+                                <select id="rd3"><option value="-1">Select Round</option></select>
+                                <br />
+                                <select id="player4" onchange="updateYear(4, this.value)"><option value="-1">Select Player</option></select>
+                                <select id="year4" onchange="updateRound(4, this.value)"><option value="-1">Select Year</option></select>
+                                <select id="rd4"><option value="-1">Select Round</option></select>
+                                <br />
+                                <select id="player5" onchange="updateYear(5, this.value)"><option value="-1">Select Player</option></select>
+                                <select id="year5" onchange="updateRound(5, this.value)"><option value="-1">Select Year</option></select>
+                                <select id="rd5"><option value="-1">Select Round</option></select>
                                 <br/>
                                 <br/>
-                                <button class="btn btn-default" onclick="doPlayerStuff()">Submit</button>
+                                <button class="btn btn-default" onclick="doPlayerStuff()">Go</button>
                             </form>
                         </div>
                     </div>
