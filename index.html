@@ -50,10 +50,10 @@
         <a href="#Heatmap" aria-controls="Heatmap" role="tab" data-toggle="tab" onclick="unsetOldPolygons(); resetPlayerData(); loadHeatmap();">Heatmap</a>
     </li>
     <li role="presentation">
-        <a href="#shotgrid" aria-controls="shotgrid" role="tab" data-toggle="tab" onclick="resetPlayerData(); clearHeatmap(); loadShotGrid();">Shot Grid</a>
+        <a href="#shotgrid" aria-controls="shotgrid" role="tab" data-toggle="tab" onclick="removeCurrentData(); resetPlayerData(); clearHeatmap(); loadShotGrid();">Shot Grid</a>
     </li>
     <li role="presentation">
-        <a href="#player" aria-controls="player" role="tab" data-toggle="tab" onclick="unsetOldPolygons(); clearHeatmap(); loadPlayer();">Player Comparison</a>
+        <a href="#player" aria-controls="player" role="tab" data-toggle="tab" onclick="removeCurrentData(); unsetOldPolygons(); clearHeatmap(); loadPlayer();">Player Comparison</a>
     </li>
 </ul>
 <div class="tab-content">

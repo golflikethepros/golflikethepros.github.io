@@ -48,6 +48,11 @@ function createMap() {
     return map;
 }
 
+function removeCurrentData() {
+    var currentDataDiv = document.getElementById("current-data");
+    currentDataDiv.innerHTML = "";
+}
+
 function initialize() {
     rounds = [0];
     years = [0];
