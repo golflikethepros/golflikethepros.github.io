@@ -219,23 +219,19 @@ function getAllData(response) {
 }
 
 function createInputs(rows) {
-    var select1 = document.getElementById("player1");
-    var select2 = document.getElementById("player2");
-    var select3 = document.getElementById("player3");
-    var select4 = document.getElementById("player4");
-    var select5 = document.getElementById("player5");
-
+    var options = []
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
             var option = document.createElement("option");
             option.text = row[1] + ", " + row[0];
             option.value = row[2];
-            select1.innerHtml += option.outerHtml;
-            select2.innerHtml += option.outerHtml;
-            select3.innerHtml += option.outerHtml;
-            select4.innerHtml += option.outerHtml;
-            select5.innerHtml += option.outerHtml;
+            options.push(option);
+        }
+    }
+    for (var j = 1; j < 6; j++) {
+        for (var k = 0; k < options.length; k++) {
+            document.getElementById("player"+j).appendChild(options[k]);
         }
     }
 }
