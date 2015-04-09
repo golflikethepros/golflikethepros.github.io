@@ -49,6 +49,11 @@ function createMap() {
 }
 
 function initialize() {
+    rounds = [0];
+    years = [0];
+    hole = 0;
+    shot = 0;
+    scores = [0, 1, 2, 3];
     var map = createMap();
     setDataToUse();
     setCurrentScores(0);
