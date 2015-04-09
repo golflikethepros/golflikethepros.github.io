@@ -101,8 +101,8 @@ function onDataFetched(response, i) {
         alert('Unable to fetch data. ' + response.error.message +
             ' (' + response.error.code + ')');
     } else {
-        extractMarkers(response.rows, i);
-        setupMap(currentPlayerInfo[i]["markers"]);
+        var spot = extractMarkers(response.rows);
+        setupMap(currentPlayerInfo[spot]["markers"]);
     }
 }
 
@@ -129,6 +129,7 @@ function findSpot(num, yr, rnd) {
 }
 
 function extractMarkers(rows) {
+    var spot = 0;
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
@@ -139,7 +140,7 @@ function extractMarkers(rows) {
             var thisHoleScore = row[2];
             var playerFirst = row[3];
             var playerLast = row[4];
-            var spot = findSpot(row[5], row[6], row[7]);
+            spot = findSpot(row[5], row[6], row[7]);
             var marker = new google.maps.Marker({
                 position: markerPoint,
                 title: playerFirst + " " + playerLast,
@@ -153,6 +154,7 @@ function extractMarkers(rows) {
             currentPlayerInfo[spot]["markers"].push(marker);
         }
     }
+    return spot;
 }
 
 function buildQuery(i) {
@@ -173,7 +175,7 @@ var currentPlayerNumber = 0;
 function addNewData() {
     var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery(currentPlayerNumber) });
     request.execute(function (response) {
-        onDataFetched(response, i);
+        onDataFetched(response);
     });
     currentPlayerNumber++;
 }
