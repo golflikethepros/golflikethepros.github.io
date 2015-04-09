@@ -232,11 +232,9 @@ function createInputs(rows) {
     }
 }
 
-function addYearRounds(frmNum, rows) {
+function addYear(frmNum, rows) {
     var year = document.getElementById("year" + frmNum);
     year.innerHTML = "<option value=\"-1\">Select Year</option>";
-    var round = document.getElementById("rd" + frmNum);
-    year.innerHTML = "<option value=\"-1\">Select Round</option>";
     for (var a = 0; a < rows.length; a++) {
         var row = rows[a];
         if (row[0]) {
@@ -244,17 +242,12 @@ function addYearRounds(frmNum, rows) {
             yearOpt.text = row[0];
             yearOpt.value = row[0];
             year.appendChild(yearOpt);
-
-            var roundOpt = document.createElement("option");
-            roundOpt.text = "Round " + row[1];
-            roundOpt.value = row[1];
-            round.appendChild(roundOpt);
         }
     }
 }
 
-function updateYearRound(frmNum, playerNum) {
-    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col6, col7 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v where col5 = "+ playerNum + " group by col6, col7" });
+function updateYear(frmNum, playerNum) {
+    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col6 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v where col5 = "+ playerNum + " group by col6" });
     request.execute(function (response) {
         addYearRounds(frmNum, response.rows);
     });
