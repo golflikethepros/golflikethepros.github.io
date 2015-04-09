@@ -41,11 +41,12 @@
 <div class="not-all-the-way">
 <h3>TPC Sawgrass</h3>
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">Heatmap</a></li>
-    <li role="presentation"><a href="#">Shot Grid</a></li>
-    <li role="presentation"><a href="#">Player Comparison</a></li>
+    <li role="presentation" class="active"><a href="#" aria-controls="Heatmap" role="tab" data-toggle="tab">Heatmap</a></li>
+    <li role="presentation"><a href="#" aria-controls="shotgrid" role="tab" data-toggle="tab">Shot Grid</a></li>
+    <li role="presentation"><a href="#" aria-controls="player" role="tab" data-toggle="tab">Player Comparison</a></li>
 </ul>
-<br/>
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="Heatmap">
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 <div class="panel panel-default panel-body-style">
     <div class="panel-heading" role="tab" id="headingOne">
@@ -113,55 +114,55 @@
                     <label><input type="radio" onclick=" updateHoles(0) " id="hole1" checked/>Hole 1</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(1) " id="hole2" />Hole 2</label>
+                    <label><input type="radio" onclick=" updateHoles(1) " id="hole2"/>Hole 2</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(2) " id="hole3" />Hole 3</label>
+                    <label><input type="radio" onclick=" updateHoles(2) " id="hole3"/>Hole 3</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(3) " id="hole4" />Hole 4</label>
+                    <label><input type="radio" onclick=" updateHoles(3) " id="hole4"/>Hole 4</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(4) " id="hole5" />Hole 5</label>
+                    <label><input type="radio" onclick=" updateHoles(4) " id="hole5"/>Hole 5</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(5) " id="hole6" />Hole 6</label>
+                    <label><input type="radio" onclick=" updateHoles(5) " id="hole6"/>Hole 6</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(6) " id="hole7" />Hole 7</label>
+                    <label><input type="radio" onclick=" updateHoles(6) " id="hole7"/>Hole 7</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(7) " id="hole8" />Hole 8</label>
+                    <label><input type="radio" onclick=" updateHoles(7) " id="hole8"/>Hole 8</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(8) " id="hole9" />Hole 9</label>
+                    <label><input type="radio" onclick=" updateHoles(8) " id="hole9"/>Hole 9</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(9) " id="hole10" />Hole 10</label>
+                    <label><input type="radio" onclick=" updateHoles(9) " id="hole10"/>Hole 10</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(10) " id="hole11" />Hole 11</label>
+                    <label><input type="radio" onclick=" updateHoles(10) " id="hole11"/>Hole 11</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(11) " id="hole12" />Hole 12</label>
+                    <label><input type="radio" onclick=" updateHoles(11) " id="hole12"/>Hole 12</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(12) " id="hole13" />Hole 13</label>
+                    <label><input type="radio" onclick=" updateHoles(12) " id="hole13"/>Hole 13</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(13) " id="hole14" />Hole 14</label>
+                    <label><input type="radio" onclick=" updateHoles(13) " id="hole14"/>Hole 14</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(14) " id="hole15" />Hole 15</label>
+                    <label><input type="radio" onclick=" updateHoles(14) " id="hole15"/>Hole 15</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(15) " id="hole16" />Hole 16</label>
+                    <label><input type="radio" onclick=" updateHoles(15) " id="hole16"/>Hole 16</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(16) " id="hole17" />Hole 17</label>
+                    <label><input type="radio" onclick=" updateHoles(16) " id="hole17"/>Hole 17</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateHoles(17) " id="hole18" />Hole 18</label>
+                    <label><input type="radio" onclick=" updateHoles(17) " id="hole18"/>Hole 18</label>
                 </div>
             </form>
         </div>
@@ -183,46 +184,46 @@
                     <label><input type="radio" onclick=" updateShots(0) " id="shot1" checked/>Shot 1</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(1) " id="shot2" />Shot 2</label>
+                    <label><input type="radio" onclick=" updateShots(1) " id="shot2"/>Shot 2</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(2) " id="shot3" />Shot 3</label>
+                    <label><input type="radio" onclick=" updateShots(2) " id="shot3"/>Shot 3</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(3) " id="shot4" />Shot 4</label>
+                    <label><input type="radio" onclick=" updateShots(3) " id="shot4"/>Shot 4</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(4) " id="shot5" />Shot 5</label>
+                    <label><input type="radio" onclick=" updateShots(4) " id="shot5"/>Shot 5</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(5) " id="shot6" />Shot 6</label>
+                    <label><input type="radio" onclick=" updateShots(5) " id="shot6"/>Shot 6</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(6) " id="shot7" />Shot 7</label>
+                    <label><input type="radio" onclick=" updateShots(6) " id="shot7"/>Shot 7</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(7) " id="shot8" />Shot 8</label>
+                    <label><input type="radio" onclick=" updateShots(7) " id="shot8"/>Shot 8</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(8) " id="shot9" />Shot 9</label>
+                    <label><input type="radio" onclick=" updateShots(8) " id="shot9"/>Shot 9</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(9) " id="shot10" />Shot 10</label>
+                    <label><input type="radio" onclick=" updateShots(9) " id="shot10"/>Shot 10</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(10) " id="shot11" />Shot 11</label>
+                    <label><input type="radio" onclick=" updateShots(10) " id="shot11"/>Shot 11</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(11) " id="shot12" />Shot 12</label>
+                    <label><input type="radio" onclick=" updateShots(11) " id="shot12"/>Shot 12</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(12) " id="shot13" />Shot 13</label>
+                    <label><input type="radio" onclick=" updateShots(12) " id="shot13"/>Shot 13</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(13) " id="shot14" />Shot 14</label>
+                    <label><input type="radio" onclick=" updateShots(13) " id="shot14"/>Shot 14</label>
                 </div>
                 <div class="radio">
-                    <label><input type="radio" onclick=" updateShots(14) " id="shot15" />Shot 15</label>
+                    <label><input type="radio" onclick=" updateShots(14) " id="shot15"/>Shot 15</label>
                 </div>
             </form>
         </div>
@@ -274,6 +275,16 @@
     </div>
 </div>
 </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="shotgrid">
+    shot grid settings
+</div>
+<div role="tabpanel" class="tab-pane" id="player">
+    player comparison settings
+</div>
+</div>
+
+
 </div>
 </div>
 <div class="snap-content snap-drawer-right"></div>
