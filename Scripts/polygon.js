@@ -117,14 +117,14 @@ function extractPolygons(rows) {
         belowPar.setNumberRange(minAvg, (10-pars[shotGridHole]));
 }
 
-function buildQuery() {
+function buildGridQuery() {
     var query = "select col0, col1, col2, col3, col4, col5, col6, col7, col8 from 1jLt5HI9FJmFoN9_DqQdQ4HoYPdw_eepDppWyBu34";
     query += " where col9 = " + (shotGridHole+1);
     return query;
 };
 
 function setGridDataToUse() {
-        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildQuery() });
+        var request = gapi.client.fusiontables.query.sqlGet({ sql: buildGridQuery() });
         request.execute(function(response) {
             onGridDataFetched(response);
         });
