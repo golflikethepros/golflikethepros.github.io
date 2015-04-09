@@ -218,10 +218,15 @@ function getAllData(response) {
 }
 
 function createInputs(rows) {
+    var select1 = document.getElementById("player1");
+
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
-
+            var option = document.createElement("option");
+            option.text = row[0] + " " + row[1];
+            option.value = row[2];
+            select1.appendChild(option);
         }
     }
 }
