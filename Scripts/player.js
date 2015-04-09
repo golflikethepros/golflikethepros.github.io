@@ -228,11 +228,14 @@ function createInputs(rows) {
     for (var i = 0; i < rows.length; ++i) {
         var row = rows[i];
         if (row[0]) {
-            $("player1").append($("<option>").val(row[2]).html(row[1] + ", " + row[0]));
-            $("player2").append($("<option>").val(row[2]).html(row[1] + ", " + row[0]));
-            $("player3").append($("<option>").val(row[2]).html(row[1] + ", " + row[0]));
-            $("player4").append($("<option>").val(row[2]).html(row[1] + ", " + row[0]));
-            $("player5").append($("<option>").val(row[2]).html(row[1] + ", " + row[0]));
+            var option = document.createElement("option");
+            option.text = row[1] + ", " + row[0];
+            option.value = row[2];
+            select1.appendChild(option);
+            select2.appendChild(option);
+            select3.appendChild(option);
+            select4.appendChild(option);
+            select5.appendChild(option);
         }
     }
 }
