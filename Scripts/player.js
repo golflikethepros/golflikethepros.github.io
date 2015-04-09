@@ -122,9 +122,9 @@ var bounds = new google.maps.LatLngBounds();
 
 function findSpot(num, yr, rnd) {
     for (var i = 0; i < currentPlayerInfo.length; i++) {
-        if (currentPlayerInfo[i]["playerNumber"] === num) {
-            if (currentPlayerInfo[i]["year"] === yr) {
-                if (currentPlayerInfo[i]["round"] === rnd) {
+        if (currentPlayerInfo[i]["playerNumber"] == num) {
+            if (currentPlayerInfo[i]["year"] == yr) {
+                if (currentPlayerInfo[i]["round"] == rnd) {
                     return i;
                 }
             }
