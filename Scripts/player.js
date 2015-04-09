@@ -80,7 +80,9 @@ function loadPlayer() {
     currentPlayerInfo[0] = famousPlayers[randomSpot];
     initializePlayer();
 }
-
+function hideInfoWindow() {
+    infoWindow.close();
+}
 function initializePlayer() {
     setPlayerDataToUse();
     for (var i = 0; i < currentPlayerInfo; i++) {

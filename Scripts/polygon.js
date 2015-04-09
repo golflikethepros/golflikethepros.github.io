@@ -10,8 +10,6 @@ function loadShotGrid() {
     initializeGrid();
 }
 
-var infoWindow;
-
 function initializeGrid() {
     setGridDataToUse();
     setupGridMap(map);
