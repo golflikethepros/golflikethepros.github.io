@@ -208,4 +208,29 @@ function setDataToUse() {
     }
 }
 
+function getAllData(response) {
+    if (response.error) {
+        alert('Unable to fetch data. ' + response.error.message +
+            ' (' + response.error.code + ')');
+    } else {
+        createInputs(response.rows);
+    }
+}
+
+function createInputs(rows) {
+    for (var i = 0; i < rows.length; ++i) {
+        var row = rows[i];
+        if (row[0]) {
+
+        }
+    }
+}
+
+function getAllPlayerNames() {
+    var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col3, col4, col5 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v group by col3, col4, col5" });
+    request.execute(function (response) {
+        getAllData(response);
+    });
+}
+
 google.maps.event.addDomListener(window, 'load', loadApi);
