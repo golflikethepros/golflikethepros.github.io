@@ -262,7 +262,7 @@ function addRound(frmNum, rows) {
             var roundOpt = document.createElement("option");
             roundOpt.text = "Round " + row[0];
             roundOpt.value = row[0];
-            year.appendChild(roundOpt);
+            round.appendChild(roundOpt);
         }
     }
 }
