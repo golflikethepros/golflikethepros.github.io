@@ -254,7 +254,7 @@ function updateYear(frmNum, playerNum) {
 }
 
 function addRound(frmNum, rows) {
-    var round = document.getElementById("round" + frmNum);
+    var round = document.getElementById("rd" + frmNum);
     round.innerHTML = "<option value=\"-1\">Select Round</option>";
     for (var a = 0; a < rows.length; a++) {
         var row = rows[a];
