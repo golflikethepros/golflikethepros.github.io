@@ -196,7 +196,7 @@ function addRound(frmNum, rows) {
     }
 }
 
-function updateRound(frmNum, year) {
+function updateRoundPlayer(frmNum, year) {
     var playerNum = document.getElementById("player" + frmNum).value;
     var request = gapi.client.fusiontables.query.sqlGet({ sql: "select col7 from 1f6gpPxDPBkRCvuFinDgE2v8q1BEaVAesyXlhy34v where col5 = " + playerNum + " and col6 = " + year + " group by col7" });
     request.execute(function (response) {
