@@ -50,7 +50,6 @@ function createMap() {
 
 function initialize() {
     var map = createMap();
-    setInitialValues();
     setDataToUse();
     setCurrentScores(0);
     setupMap(map);
@@ -131,68 +130,6 @@ function buildQuery() {
     return query;
 };
 
-function setInitialValues() {
-    if (readCookie("years").length === 0) {
-        years = [0];
-    } else {
-        years = readCookie("years");
-    }
-    if (readCookie("rounds").length === 0) {
-        rounds = [0];
-    } else {
-        rounds = readCookie("rounds");
-    }
-    if (readCookie("hole").length === 0) {
-        hole = 0;
-    } else {
-        hole = readCookie("hole")[0];
-    }
-    if (readCookie("scores").length === 0) {
-        setCurrentScores(hole);
-        updateScores(document.getElementById("scores"));
-    } else {
-        scores = readCookie("scores");
-    }
-    if (readCookie("shot").length === 0) {
-        shot = 0;
-    } else {
-        shot = readCookie("shot")[0];
-    }
-    setButtonsForValues();
-}
-
-function setButtonsForValues() {
-    var scoreForm = document.getElementById("scores");
-    for (var i = 0; i < scoreForm.Score.length; i++) {
-        if (scores.indexOf(i) > -1) {
-            scoreForm.Score[i].checked = true;
-        } else {
-            scoreForm.Score[i].checked = false;
-        }
-    }
-
-    var yearForm = document.getElementById("years");
-    for (i = 0; i < yearForm.Year.length; i++) {
-        if (years.indexOf(i) > -1) {
-            yearForm.Year[i].checked = true;
-        } else {
-            yearForm.Year[i].checked = false;
-        }
-    }
-
-    var roundForm = document.getElementById("rounds");
-    for (i = 0; i < roundForm.Round.length; i++) {
-        if (rounds.indexOf(i) > -1) {
-            roundForm.Round[i].checked = true;
-        } else {
-            roundForm.Round[i].checked = false;
-        }
-    }
-
-    document.getElementById("hole" + (hole + 1)).checked = true;
-    document.getElementById("shot" + (shot + 1)).checked = true;
-}
-
 function validData() {
     return shot != null && hole != null && scores.length > 0 && years.length > 0 && rounds.length > 0;
 }
@@ -244,7 +181,6 @@ function updateRound(frm, reset) {
         }
     }
     setDataToUse();
-    storeCookie("rounds", rounds);
 }
 
 var allYearsSelected;
@@ -309,7 +245,6 @@ function updateScores(frm, reset) {
         }
     }
     setDataToUse();
-    storeCookie("scores", scores);
 }
 
 function setCurrentScores(hole) {
@@ -333,7 +268,6 @@ function updateHoles(value) {
         heatmap.setMap(null);
     }
     setDataToUse();
-    storeCookie("hole", [hole]);
 }
 
 function updateYears(frm) {
@@ -344,13 +278,11 @@ function updateYears(frm) {
         }
     }
     setDataToUse();
-    storeCookie("years", years);
 }
 
 function updateShots(value) {
     shot = value;
     setDataToUse();
-    storeCookie("shot", [shot]);
 }
 
 google.maps.event.addDomListener(window, 'load', loadApi);
