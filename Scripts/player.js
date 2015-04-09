@@ -12,14 +12,71 @@ var markerUrls = [
 
 function loadPlayer() {
     getAllPlayerNames();
-    currentPlayerInfo = [
+    var famousPlayers = [
+        {
+            "playerNumber": 24502,
+            "year": 2004,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 1381,
+            "year": 2005,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 6004,
+            "year": 2006,
+            "round": 4,
+            "markers": []
+        },
         {
             "playerNumber": 1810,
-            "year": 2006,
-            "round": 1,
+            "year": 2007,
+            "round": 4,
             "markers": []
-        }
+        },
+        {
+            "playerNumber": 21209,
+            "year": 2008,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 21528,
+            "year": 2009,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 23135,
+            "year": 2010,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 24357,
+            "year": 2011,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 23108,
+            "year": 2012,
+            "round": 4,
+            "markers": []
+        },
+        {
+            "playerNumber": 8793,
+            "year": 2013,
+            "round": 4,
+            "markers": []
+        },
+
     ];
+    var randomSpot = Math.floor(Math.random() * 10); 
+    currentPlayerInfo[0] = famousPlayers[randomSpot];
     initializePlayer();
 }
 
